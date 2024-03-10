@@ -25,15 +25,15 @@ namespace DiagramsForGrasshopper
         /// </summary>
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Text", "T", "Text as a string", GH_ParamAccess.item);
-            pManager.AddPointParameter("Location", "L", "Location for text", GH_ParamAccess.item, Point3d.Origin);
+            pManager.AddTextParameter("Text", "Txt", "Text as a string", GH_ParamAccess.item);
+            pManager.AddPointParameter("Location", "Loc", "Location for text", GH_ParamAccess.item, Point3d.Origin);
             pManager.HideParameter(1);
-            pManager.AddIntegerParameter("Anchor", "A",
+            pManager.AddIntegerParameter("Anchor", "Anc",
                "Text Anchor 0: Bottom Left, 1: Bottom Center, 2: Bottom Right \n 3: Middle Left, 4: Middle Center, 5: Middle Right \n 6: Top Left, 7: Top Center, 8: Top Right",
                GH_ParamAccess.item, 0);
 
-            pManager.AddNumberParameter("Max Width", "W", "Maximum Width, Set to less than 0 to ignore ", GH_ParamAccess.item, -1);
-            pManager.AddNumberParameter("Max Height", "H", "Maximum Height, Set to less than 0 to ignore", GH_ParamAccess.item, -1);
+            pManager.AddNumberParameter("Max Width", "Wdth", "Maximum Width, Set to less than 0 to ignore ", GH_ParamAccess.item, -1);
+            pManager.AddNumberParameter("Max Height", "Hght", "Maximum Height, Set to less than 0 to ignore", GH_ParamAccess.item, -1);
 
                  
 

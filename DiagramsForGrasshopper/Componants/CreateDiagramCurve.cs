@@ -15,7 +15,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CreateDiagramCurve()
           : base("CreateDiagramCurve", "DCrv",
-              "Description",
+              "A componant to create Curves to be used in diagrams",
               "Display", "Diagram")
         {
             Modifiers.Add(new CurveModifiers(true, true, true, true));

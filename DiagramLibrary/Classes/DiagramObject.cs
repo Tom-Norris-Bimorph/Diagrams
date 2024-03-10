@@ -55,9 +55,11 @@ namespace DiagramLibrary
 
         public abstract BoundingBox GetBoundingBox();
 
-        public abstract void DrawBitmap(Grasshopper.Kernel.GH_Component component,Graphics g);
+        public abstract void DrawBitmap(Graphics g);
 
-        public abstract void DrawRhinoPreview(Grasshopper.Kernel.GH_Component component,Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake);
+        public abstract void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state);
+
+        public abstract List<Guid> BakeRhinoPreview(double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr);
 
         public abstract DiagramObject Duplicate();
 

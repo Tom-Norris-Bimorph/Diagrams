@@ -1,4 +1,8 @@
-﻿using Grasshopper.Kernel.Types;
+﻿using Grasshopper.Kernel;
+using Grasshopper.Kernel.Types;
+using Rhino;
+using Rhino.DocObjects;
+using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DiagramLibrary
 {
-    public class DiagramGoo : GH_Goo<Diagram>
+    public class DiagramGoo : GH_Goo<Diagram>, IGH_BakeAwareData
     {
 
         public DiagramGoo()
@@ -50,6 +54,45 @@ namespace DiagramLibrary
             else
                 return Value.ToString();
         }
+
+        
+        /*
+        public void BakeGeometry(RhinoDoc doc, List<Guid> obj_ids)
+        {
+            obj_ids = new List<Guid>();
+            var diagram = Value;
+            if (diagram == null) { return; }
+
+
+            diagram.BakeRhinoPreview(doc.ModelAbsoluteTolerance, Transform.ZeroTransformation, DrawState.Normal, doc, doc.CreateDefaultAttributes(), out obj_ids);
+
+        }
+
+        public void BakeGeometry(RhinoDoc doc, ObjectAttributes att, List<Guid> obj_ids)
+        {
+            obj_ids = new List<Guid>();
+            var diagram = Value;
+            if (diagram == null) { return; }
+
+
+            diagram.BakeRhinoPreview(doc.ModelAbsoluteTolerance, Transform.ZeroTransformation, DrawState.Normal, doc, att, out obj_ids);
+
+        }
+        */
+        public bool BakeGeometry(RhinoDoc doc, ObjectAttributes att, out Guid obj_guid)
+        {
+            obj_guid = Guid.Empty;
+             var diagram = Value;
+            if (diagram == null) { return false; }
+
+
+            diagram.BakeRhinoPreview(doc.ModelAbsoluteTolerance, Transform.ZeroTransformation, DrawState.Normal, doc, att, out List<Guid> obj_ids);
+            obj_guid = obj_ids[0];
+            return true;
+        }
+
+       // public bool IsBakeCapable => true;
+
         public override string TypeName
         {
             get { return ("Diagram"); }
@@ -59,13 +102,6 @@ namespace DiagramLibrary
             get { return ("Defines a Diagram"); }
         }
 
-
-
-
-
-
-
-
-
+       
     }
 }

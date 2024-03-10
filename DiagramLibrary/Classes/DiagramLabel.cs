@@ -37,8 +37,33 @@ namespace DiagramLibrary
             DiagramLabel diagramLabel = new DiagramLabel();
 
             var line = new Line(Diagram.ConvertPoint(leaderLocation), direction, offset);
-            diagramLabel.m_DiagramText = DiagramText.Create(text, Diagram.ConvertPoint(line.To), colour, textSize, Rhino.Geometry.TextJustification.BottomLeft, maskColour, frameColor, frameLineWeight, fontName, new SizeF(-1, -1), padding, Rhino.Geometry.TextJustification.BottomLeft);
-            var line2 = new Line(line.To, new Vector3d(1,0,0), diagramLabel.m_DiagramText.GetTotalSize().Width);
+            var directionUnitized = direction;
+            directionUnitized.Unitize();
+            var justification = Rhino.Geometry.TextJustification.None;
+            Vector3d underlineDirection = new Vector3d(1, 0, 0);
+
+            if (directionUnitized.X == 0)
+            {
+                justification = TextJustification.BottomCenter;
+            }
+
+
+            if (directionUnitized.X < 0) {
+                justification = TextJustification.BottomRight;
+                underlineDirection = new Vector3d(-1, 0, 0);
+            }
+
+            if (directionUnitized.X > 0)
+            {
+                justification = TextJustification.BottomLeft;
+            }
+
+           
+
+
+
+            diagramLabel.m_DiagramText = DiagramText.Create(text, Diagram.ConvertPoint(line.To), colour, textSize, justification, maskColour, frameColor, frameLineWeight, fontName, new SizeF(-1, -1), padding, Rhino.Geometry.TextJustification.BottomLeft);
+            var line2 = new Line(line.To, underlineDirection, diagramLabel.m_DiagramText.GetTotalSize().Width);
             diagramLabel.m_leader = DiagramCurve.Create(new Polyline( new Point3d[] { line.From,line.To,line2.To }).ToNurbsCurve(), colour, lineWeight);
 
             if (crvEnd != null) {
@@ -70,16 +95,27 @@ namespace DiagramLibrary
             return bb;
         }
 
-        public override void DrawBitmap(GH_Component component, Graphics g)
+        public override void DrawBitmap( Graphics g)
         {
-            m_leader.DrawBitmap(component, g);
-            m_DiagramText.DrawBitmap(component, g);
+            m_leader.DrawBitmap( g);
+            m_DiagramText.DrawBitmap( g);
         }
 
-        public override void DrawRhinoPreview(GH_Component component, DisplayPipeline pipeline, double tolerance, Transform xform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
+        public override void DrawRhinoPreview( DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
         {
-            m_leader.DrawRhinoPreview(component, pipeline, tolerance, xform, colorOverride,  doc, Bake);
-            m_DiagramText.DrawRhinoPreview(component, pipeline, tolerance, xform, colorOverride,  doc, Bake);
+            m_leader.DrawRhinoPreview( pipeline, tolerance, xform, state);
+            m_DiagramText.DrawRhinoPreview( pipeline, tolerance, xform, state);
+
+            return ;
+        }
+
+        public override List<Guid> BakeRhinoPreview( double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+            outList.AddRange(m_leader.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+            outList.AddRange(m_DiagramText.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+
+            return outList;
         }
 
 

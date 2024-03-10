@@ -101,23 +101,33 @@ namespace DiagramLibrary
             return DiagramText.Create(textValue, Diagram.ConvertPoint(pt), m_Colour, m_TextSize, TextJustification.MiddleCenter, m_MaskColor, m_Colour, m_LineWeight, m_FontName, new SizeF(-1, -1), m_Padding, TextJustification.MiddleCenter);
         }
 
-        public override void DrawBitmap(Grasshopper.Kernel.GH_Component component, Graphics g)
+        public override void DrawBitmap(Graphics g)
         {
-            base.DrawBitmap(component, g);
+            base.DrawBitmap(g);
 
 
-            getText().DrawBitmap(component, g);
+            getText().DrawBitmap( g);
 
         }
 
 
 
-        public override void DrawRhinoPreview(Grasshopper.Kernel.GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform transform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
+        public override void  DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform transform, DrawState state)
         {
-            base.DrawRhinoPreview(component, pipeline, tolerance, transform, colorOverride,  doc,  Bake);
+            base.DrawRhinoPreview( pipeline, tolerance, transform, state);
 
-            getText().DrawRhinoPreview(component, pipeline, tolerance, transform, colorOverride,  doc,  Bake);
+           getText().DrawRhinoPreview( pipeline, tolerance, transform, state);
+            return;
+        }
 
+        public override List<Guid> BakeRhinoPreview( double tolerance, Transform transform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+
+            outList.AddRange(base.BakeRhinoPreview(tolerance, transform, state, doc, attr));
+
+            outList.AddRange(getText().BakeRhinoPreview(tolerance, transform, state, doc, attr));
+            return outList;
         }
 
     }

@@ -14,7 +14,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CreateDiagramImage()
           : base("CreateDiagramImage", "DImage",
-              "Description",
+              "A componant to create Images to be used in diagrams",
               "Display", "Diagram")
         {
         }
@@ -26,10 +26,10 @@ namespace DiagramsForGrasshopper
         {
             pManager.AddTextParameter("Image", "Img", "File path to the image", GH_ParamAccess.item);
          //   this.Params.Input[0].ObjectChanged += CreateDiagramImage_ObjectChanged;
-            pManager.AddPointParameter("Location", "L", "Point locatin for the image", GH_ParamAccess.item, new Point3d(0,0,0));
+            pManager.AddPointParameter("Location", "Loc", "Point locatin for the image", GH_ParamAccess.item, new Point3d(0,0,0));
             pManager.HideParameter(1);
-            pManager.AddNumberParameter("Width", "W", "Width in Pixels, Optional: set to less than 0 to use the image's width", GH_ParamAccess.item,-1);
-            pManager.AddNumberParameter("Height", "H", "Height in Pixels, Optional: set to less than 0 to use the image's height", GH_ParamAccess.item, -1);
+            pManager.AddNumberParameter("Width", "Wdth", "Width in Pixels, Optional: set to less than 0 to use the image's width", GH_ParamAccess.item,-1);
+            pManager.AddNumberParameter("Height", "Hght", "Height in Pixels, Optional: set to less than 0 to use the image's height", GH_ParamAccess.item, -1);
         }
 
      

@@ -75,6 +75,7 @@
     <Compile Include="Componants\CreateDiagramDimention.cs" />
     <Compile Include="Componants\CreateDiagramLabel.cs" />
     <Compile Include="Componants\CreateDiagramPieChart.cs" />
+    <Compile Include="Componants\DiagramBake.cs" />
     <Compile Include="Componants\RhinoDiagram.cs" />
     <Compile Include="DiagramsForGrasshopperInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +86,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Icons\BakeIcon.png" />
     <Content Include="Icons\CurveEndsIcon.png" />
     <Content Include="Icons\CurveIcon.png" />
     <Content Include="Icons\DiagramIcon.png" />

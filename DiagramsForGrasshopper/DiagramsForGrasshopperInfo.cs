@@ -26,7 +26,7 @@ namespace DiagramsForGrasshopper
             get
             {
                 //Return a short string describing the purpose of this GHA library.
-                return "";
+                return "Diagrams for Rhino is an open-source plugin for Grasshopper to allow the creation of easy, repeatable diagrams from Grasshopper. ";
             }
         }
         public override Guid Id
@@ -42,7 +42,7 @@ namespace DiagramsForGrasshopper
             get
             {
                 //Return a string identifying you or your company.
-                return "";
+                return "Tom Norris - Point Space Limited";
             }
         }
         public override string AuthorContact
@@ -50,7 +50,7 @@ namespace DiagramsForGrasshopper
             get
             {
                 //Return a string representing your preferred contact details.
-                return "";
+                return "tom@point-space.co.uk";
             }
         }
     }

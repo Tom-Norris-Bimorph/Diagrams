@@ -1,4 +1,5 @@
-﻿using Rhino.Geometry;
+﻿using Rhino;
+using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -328,7 +329,7 @@ namespace DiagramLibrary
 
         }
 
-        public Bitmap DrawBitmap(Grasshopper.Kernel.GH_Component component, float scale) // be careful all the Y dimentions need to be be subtracted from the the hieght at this is drawn upside down
+        public Bitmap DrawBitmap(float scale) // be careful all the Y dimentions need to be be subtracted from the the hieght at this is drawn upside down
         {
             //TODO DrawBitmap needs to pass on the scale and draw accordingly
             Size size = GetBoundingSize(scale);
@@ -354,17 +355,17 @@ namespace DiagramLibrary
                 graphics.TranslateTransform(-m_Location.X, -m_Location.Y, System.Drawing.Drawing2D.MatrixOrder.Append);
                 graphics.ScaleTransform(scale, scale);
                 graphics.FillRectangle(Brushes.White, new RectangleF(0, 0, this.m_Width, this.m_Height));// text displays badly without this, if no background is set
-                GetBackground().DrawBitmap(component, graphics);
+                GetBackground().DrawBitmap( graphics);
                 foreach (DiagramObject obj in m_Objects)
                 {
                     try
                     {
-                        obj.DrawBitmap(component, graphics);
+                        obj.DrawBitmap( graphics);
                     }
                     catch (Exception ex)
                     {
 
-                        component.AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel.Warning, "GH Canvas: An Object was Skipped When Drawing: " + ex.Message);
+                       // component.AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel.Warning, "GH Canvas: An Object was Skipped When Drawing: " + ex.Message);
                     }
                    
 
@@ -381,17 +382,18 @@ namespace DiagramLibrary
         }
 
 
-        public void DrawRhinoPreview(Grasshopper.Kernel.GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolernace, Transform xform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
+        public  Report DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
         {
+            Report report = new Report();
+           
             if (m_Location != PointF.Empty)
             {
-
-
+               
                 xform = Transform.Multiply(xform, Transform.Translation(new Vector3d(-m_Location.X, -m_Location.Y, 0)));
 
             }
 
-            GetBackground().DrawRhinoPreview(component, pipeline, tolernace, xform, colorOverride, doc, Bake);
+            GetBackground().DrawRhinoPreview(pipeline, tolerance, xform, state);
 
             if (m_Title != null)
             {
@@ -403,7 +405,7 @@ namespace DiagramLibrary
                     title.TextSize = this.m_Width / 20;
                 }
 
-                title.DrawRhinoPreview(component, pipeline, tolernace, xform, colorOverride, doc, Bake);
+                title.DrawRhinoPreview( pipeline, tolerance, xform, state);
             }
 
             foreach (DiagramObject obj in m_Objects)
@@ -411,23 +413,72 @@ namespace DiagramLibrary
 
                 try
                 {
-                    obj.DrawRhinoPreview(component, pipeline, tolernace, xform, colorOverride, doc, Bake);
+                    obj.DrawRhinoPreview( pipeline, tolerance, xform, state);
                 }
                 catch (Exception ex)
                 {
 
-                    component.AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel.Warning, "Rhino Preview: An Object was Skipped When Drawing: " + ex.Message);
+                    report.AddMessage("Rhino Preview: An Object was Skipped When Drawing: " + ex.Message, Grasshopper.Kernel.GH_RuntimeMessageLevel.Warning);
                     }
 
                 
 
             }
 
-
+            return report;
 
         }
 
+        public Report BakeRhinoPreview( double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr, out List<Guid> guids)
+        {
+            guids = new List<Guid>();
+            Report report = new Report();
 
+            if (m_Location != PointF.Empty)
+            {
+
+                xform = Transform.Multiply(xform, Transform.Translation(new Vector3d(-m_Location.X, -m_Location.Y, 0)));
+
+            }
+
+            guids.AddRange( GetBackground().BakeRhinoPreview(tolerance, xform, state,doc, attr));
+
+            if (m_Title != null)
+            {
+                PointF pt = new PointF(0, this.m_Height);
+                DiagramText title = m_Title;
+                title.Location = pt;
+                if (title.TextSize < 0)
+                {
+                    title.TextSize = this.m_Width / 20;
+                }
+
+                guids.AddRange(title.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+            }
+
+            foreach (DiagramObject obj in m_Objects)
+            {
+
+                try
+                {
+                    guids.AddRange(obj.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+                }
+                catch (Exception ex)
+                {
+
+                    report.AddMessage("Rhino Bake: An Object was Skipped When Drawing: " + ex.Message, Grasshopper.Kernel.GH_RuntimeMessageLevel.Warning);
+                }
+
+
+
+            }
+
+            return report;
+
+        }
+
+        
+    
 
     }
 }

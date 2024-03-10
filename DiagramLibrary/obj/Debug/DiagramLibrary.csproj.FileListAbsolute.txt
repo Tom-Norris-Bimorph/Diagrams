@@ -16,3 +16,9 @@ C:\Users\tomno\OneDrive - Point Space Limited\Git\Diagrams\DiagramLibrary\obj\De
 C:\Users\tomno\OneDrive - Point Space Limited\Git\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.dll
 C:\Users\tomno\OneDrive - Point Space Limited\Git\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.pdb
 C:\Users\tomno\OneDrive - Point Space Limited\Git\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.csprojAssemblyReference.cache
+C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\bin\DiagramLibrary.dll
+C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\bin\DiagramLibrary.pdb
+C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.csprojAssemblyReference.cache
+C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.csproj.CoreCompileInputs.cache
+C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.dll
+C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.pdb

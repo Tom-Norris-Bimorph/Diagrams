@@ -17,7 +17,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
     public CreateDiagramTable()
           : base("CreateDiagramTable", "DTable",
-                "Description",
+                "A componant to create Tables to be used in diagrams",
               "Display", "Diagram")
         {
             Modifiers.Add(new TextModifiers(true, true, true, true, false, false, false, false));
@@ -27,11 +27,11 @@ namespace DiagramsForGrasshopper
 
         protected override void RegisterInputStartingParams(GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Data", "D", "Data as a string DataTree each branch is a row", GH_ParamAccess.tree);
-            pManager.AddPointParameter("Location", "L", "Location for text", GH_ParamAccess.item, new Point3d(0, 0, 0));
+            pManager.AddTextParameter("Data", "Data", "Data as a string DataTree each branch is a row", GH_ParamAccess.tree);
+            pManager.AddPointParameter("Location", "Loc", "Location for text", GH_ParamAccess.item, new Point3d(0, 0, 0));
             pManager.HideParameter(1);
-            pManager.AddNumberParameter("CellWidths", "CW", "List of Widths for each column, first value will be the default width", GH_ParamAccess.list, 100);
-            pManager.AddNumberParameter("CellHeight", "CH", "List of Heights for each Row, first value will be the default height", GH_ParamAccess.list, 30);
+            pManager.AddNumberParameter("CellWidths", "CWdths", "List of Widths for each column, first value will be the default width", GH_ParamAccess.list, 100);
+            pManager.AddNumberParameter("CellHeight", "CHghts", "List of Heights for each Row, first value will be the default height", GH_ParamAccess.list, 30);
             pManager.AddColourParameter("Background Colour", "BClr", "Back Colour", GH_ParamAccess.item, Color.Transparent);
             pManager.AddColourParameter("Header Colour", "HClr", "Header Colour", GH_ParamAccess.item, Color.Gray);
             pManager.AddBooleanParameter("Flip Direction", "Flip", "Flip the Direction of the table",GH_ParamAccess.item,false);

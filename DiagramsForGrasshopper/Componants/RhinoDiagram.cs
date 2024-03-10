@@ -28,7 +28,7 @@ namespace DiagramsForGrasshopper
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
 
-            pManager.AddGenericParameter("Diagram", "D", "Image or Diagram to display inside this componant", GH_ParamAccess.item);
+            pManager.AddGenericParameter("Diagram", "DObjs", "Image or Diagram to display inside this componant", GH_ParamAccess.item);
         
 
             pManager.AddTransformParameter("Transform", "Xfrom", "A transformation for the diagram", GH_ParamAccess.item);

@@ -17,7 +17,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CreateDiagramLabel()
           : base("CreateDiagramLabel", "DLabel",
-              "Description",
+              "A componant to create small text labels to be used in diagrams",
             "Display", "Diagram")
         {
             Modifiers.Add(new TextModifiers(true, true, true, false, true, true, true, true));
@@ -30,11 +30,11 @@ namespace DiagramsForGrasshopper
         /// </summary>
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Text", "T", "Text as a string", GH_ParamAccess.item);
-            pManager.AddPointParameter("LabelPoint", "L", "The point on the target for the label", GH_ParamAccess.item, Point3d.Origin);
+            pManager.AddTextParameter("Text", "Txt", "Text as a string", GH_ParamAccess.item);
+            pManager.AddPointParameter("LabelPoint", "LPt", "The point on the target for the label", GH_ParamAccess.item, Point3d.Origin);
             pManager.HideParameter(1);
-            pManager.AddNumberParameter("Offset", "O", "Offset from Label Point", GH_ParamAccess.item, 10);
-            pManager.AddVectorParameter("Direction", "D", "Direction for label offset", GH_ParamAccess.item, new Vector3d(1, 1, 0));
+            pManager.AddNumberParameter("Offset", "Offset", "Offset from Label Point", GH_ParamAccess.item, 10);
+            pManager.AddVectorParameter("Direction", "Dir", "Direction for label offset", GH_ParamAccess.item, new Vector3d(1, 1, 0));
             pManager.HideParameter(3);
            
         }

@@ -14,7 +14,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CreateDiagramCurveEnd()
           : base("CreateDiagramCurveEnd", "DCrvEnd",
-              "Description",
+              "A componant to create Curve Ends to be used in diagrams Curve Elements",
           "Display", "Diagram")
         {
             Modifiers.Add(new CurveModifiers(true, true, false, false));
@@ -27,9 +27,9 @@ namespace DiagramsForGrasshopper
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddCurveParameter("Curves", "Crvs", "The Curve", GH_ParamAccess.list);
-            pManager.AddPointParameter("Point", "P", "Pivot point of the Curve End, this is the point which will be put on the target Curve's end point, Default is the Origin", GH_ParamAccess.item, Point3d.Origin);
-            pManager.AddVectorParameter("Direction", "D", "This is the direction of the Curve End which will be aligned with the tangent of the Target Curve's end point, Default is the Y - Axis", GH_ParamAccess.item,Vector3d.YAxis);
-            pManager.AddBooleanParameter("Flipped", "F", "Flip the direction of the Curve End", GH_ParamAccess.item, true);
+            pManager.AddPointParameter("Point", "Pt", "Pivot point of the Curve End, this is the point which will be put on the target Curve's end point, Default is the Origin", GH_ParamAccess.item, Point3d.Origin);
+            pManager.AddVectorParameter("Direction", "Dir", "This is the direction of the Curve End which will be aligned with the tangent of the Target Curve's end point, Default is the Y - Axis", GH_ParamAccess.item,Vector3d.YAxis);
+            pManager.AddBooleanParameter("Flipped", "Flip", "Flip the direction of the Curve End", GH_ParamAccess.item, true);
 
         }
 

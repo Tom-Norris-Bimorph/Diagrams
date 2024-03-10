@@ -61,16 +61,25 @@ namespace DiagramLibrary
             return bb;
         }
 
-        public override void DrawBitmap(GH_Component component, Graphics g)
+        public override void DrawBitmap(Graphics g)
         {
-            m_Mask.DrawBitmap(component, g);
-            m_DiagramText.DrawBitmap(component, g);
+            m_Mask.DrawBitmap( g);
+            m_DiagramText.DrawBitmap( g);
         }
 
-        public override void DrawRhinoPreview(GH_Component component, DisplayPipeline pipeline, double tolerance, Transform xform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
+        public override void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
         {
-            m_Mask.DrawRhinoPreview(component, pipeline,  tolerance,  xform,  colorOverride, doc,  Bake);
-            m_DiagramText.DrawRhinoPreview(component, pipeline, tolerance, xform, colorOverride, doc,  Bake);
+             m_Mask.DrawRhinoPreview(pipeline,  tolerance,  xform,  state);
+            m_DiagramText.DrawRhinoPreview(pipeline, tolerance, xform, state);
+            return;
+        }
+
+        public override List<Guid> BakeRhinoPreview( double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+            outList.AddRange(m_Mask.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+            outList.AddRange(m_DiagramText.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+            return outList;
         }
 
 

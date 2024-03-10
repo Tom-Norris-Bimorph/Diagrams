@@ -101,31 +101,46 @@ namespace DiagramLibrary
 
 
 
-        public override void DrawBitmap( Grasshopper.Kernel.GH_Component component, Graphics g)
+        public override void DrawBitmap(  Graphics g)
 
         {
             
             foreach (DiagramCurve crv in m_Curves)
             {
 
-                crv.DrawBitmap(component,g);
+                crv.DrawBitmap(g);
             }
             
         }
 
 
-        public override void DrawRhinoPreview( Grasshopper.Kernel.GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, bool colorOverride, Rhino.RhinoDoc doc,bool Bake)
+        public override void DrawRhinoPreview( Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
         {
+          
             foreach (DiagramCurve crv in m_Curves)
             {
 
-                crv.DrawRhinoPreview(component, pipeline,  tolerance,  xform,  colorOverride, doc, Bake);
+               crv.DrawRhinoPreview(pipeline,  tolerance,  xform,  state);
             }
+            return ;
 
 
         }
 
-       
+        public override List<Guid> BakeRhinoPreview( double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+            foreach (DiagramCurve crv in m_Curves)
+            {
+
+                outList.AddRange(crv.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+            }
+            return outList;
+
+
+        }
+
+
 
 
     }

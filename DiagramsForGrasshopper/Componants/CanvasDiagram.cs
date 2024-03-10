@@ -24,7 +24,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CanvasDiagram()
           : base("CanvasDiagram", "Nickname",
-              "Description",
+              "A componant to view diagrams on the grasshopper canvas",
                "Display", "Diagram")
         {
         }
@@ -157,7 +157,7 @@ namespace DiagramsForGrasshopper
                     break;
                 }
 
-                diagram.DrawBitmap(this, 1).Save(filename);
+                diagram.DrawBitmap(1).Save(filename);
             
             }
         }

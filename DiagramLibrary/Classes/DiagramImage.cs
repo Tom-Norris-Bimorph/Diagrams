@@ -15,7 +15,9 @@ namespace DiagramLibrary
         private PointF m_Location;
         private SizeF m_Size;
         private string m_ImagePath;
-
+        private Rhino.Display.DisplayMaterial m_DisplayMaterialCache;
+        private Rhino.DocObjects.Material m_DocMaterialCache;
+        private int m_DocMaterialCacheIndex;
 
 
         public static DiagramImage Create(string imagePath, PointF Location, SizeF Size)
@@ -34,6 +36,10 @@ namespace DiagramLibrary
                 diagramImage.m_Size = Size;
 
             }
+            diagramImage.m_DisplayMaterialCache = null;
+            diagramImage.m_DocMaterialCache = null;
+            diagramImage.m_DocMaterialCacheIndex = -1;
+
             return diagramImage;
         }
 
@@ -45,6 +51,9 @@ namespace DiagramLibrary
             diagramImage.m_Image = m_Image;
             diagramImage.m_Location = m_Location;
             diagramImage.m_Size = m_Size;
+            diagramImage.m_DisplayMaterialCache = null;
+            diagramImage.m_DocMaterialCache = null;
+            diagramImage.m_DocMaterialCacheIndex = -1;
 
             return diagramImage;
         }
@@ -54,7 +63,7 @@ namespace DiagramLibrary
         }
 
 
-        public override void DrawBitmap(Grasshopper.Kernel.GH_Component component, Graphics g)
+        public override void DrawBitmap(Graphics g)
         {
 
            // Drawn Upside Down as final image is flipped
@@ -65,22 +74,64 @@ namespace DiagramLibrary
 
        
 
-        public override void DrawRhinoPreview(Grasshopper.Kernel.GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xfrom, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
+        public override void DrawRhinoPreview( Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xfrom, DrawState state)
         {
-
-            Rectangle3d rec = new Rectangle3d(Plane.WorldXY, new Interval(m_Location.X, m_Location.X + m_Size.Width), new Interval(m_Location.Y, m_Location.Y + m_Size.Height));
-            Brep brep = Brep.CreateTrimmedPlane(Plane.WorldXY, rec.ToNurbsCurve());
-
-            var texture = new Rhino.DocObjects.Texture();
-            texture.FileName = m_ImagePath;
-                
-              var mat = new Rhino.Display.DisplayMaterial();
             
+            Brep brep = GeneratePreviewGeometry();
 
-            mat.SetBitmapTexture(texture, true);
-            pipeline.DrawBrepShaded(brep, new Rhino.Display.DisplayMaterial(mat));
+            if (m_DisplayMaterialCache == null)
+                {
+                    var texture = new Rhino.DocObjects.Texture();
+                    texture.FileName = m_ImagePath;
+
+                    m_DisplayMaterialCache = new Rhino.Display.DisplayMaterial();
+                    m_DisplayMaterialCache.SetBitmapTexture(texture, true);
+                }
+                pipeline.DrawBrepShaded(brep, m_DisplayMaterialCache);
+            
+           
+
+            return;
 
         }
+
+        private Brep GeneratePreviewGeometry() {
+            Rectangle3d rec = new Rectangle3d(Plane.WorldXY, new Interval(m_Location.X, m_Location.X + m_Size.Width), new Interval(m_Location.Y, m_Location.Y + m_Size.Height));
+            return Brep.CreateTrimmedPlane(Plane.WorldXY, rec.ToNurbsCurve());
+        }
+
+        public override List<Guid> BakeRhinoPreview( double tolerance, Transform xfrom, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+
+            Brep brep = GeneratePreviewGeometry();
+
+
+            
+                if (m_DocMaterialCache == null)
+                {
+                    var texture = new Rhino.DocObjects.Texture();
+                    texture.FileName = m_ImagePath;
+
+                    m_DocMaterialCache = new Rhino.DocObjects.Material();
+                    m_DocMaterialCache.SetBitmapTexture(texture);
+                    m_DocMaterialCacheIndex = doc.Materials.Add(m_DocMaterialCache);
+                }
+
+
+               
+                attr.MaterialSource = Rhino.DocObjects.ObjectMaterialSource.MaterialFromObject;
+
+                attr.MaterialIndex = m_DocMaterialCacheIndex;
+
+                outList.Add(doc.Objects.AddBrep(brep, attr));
+            
+
+
+            return outList;
+
+        }
+
 
     }
 }

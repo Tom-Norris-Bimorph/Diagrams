@@ -11,10 +11,10 @@ namespace DiagramsForGrasshopper
     {
         /// <summary>
         /// Initializes a new instance of the CreateDiagramLabel class.
-        /// </summary>
+        /// </summary>  
         public CreateDiagramPointLabel()
           : base("CreateDiagramPointLabel", "DPtLabel",
-              "Description",
+              "A componant to create a small label to be used in diagrams",
             "Display", "Diagram")
         {
             Modifiers.Add(new TextModifiers(true, true, false, false, false, true, true, true));
@@ -27,8 +27,8 @@ namespace DiagramsForGrasshopper
         /// </summary>
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddTextParameter("Text", "T", "Text as a string", GH_ParamAccess.item);
-                      pManager.AddPointParameter("LabelPoint", "L", "The point on the target for the label", GH_ParamAccess.item, Point3d.Origin);
+            pManager.AddTextParameter("Text", "Txt", "Text as a string", GH_ParamAccess.item);
+                      pManager.AddPointParameter("LabelPoint", "LPt", "The point on the target for the label", GH_ParamAccess.item, Point3d.Origin);
             pManager.HideParameter(1);
       
         }

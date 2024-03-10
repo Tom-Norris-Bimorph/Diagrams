@@ -58,10 +58,12 @@ namespace DiagramLibrary
             diagramTable.m_CellHeights = m_CellHeights;
             diagramTable.m_TextSize = m_TextSize;
             diagramTable.m_FontName = m_FontName;
-
+            diagramTable.m_flip = m_flip;
+            diagramTable.m_HeaderColor = m_HeaderColor;
             diagramTable.m_Padding = m_Padding;
             diagramTable.m_Justification = m_Justification;
             diagramTable.UpdateCache();
+          
             return diagramTable;
         }
 
@@ -179,100 +181,17 @@ namespace DiagramLibrary
       
 
 
-        public override void DrawBitmap(Grasshopper.Kernel.GH_Component component, Graphics g)
+        public override List<DiagramObject> GenerateObjects()
         {
-
+            List<DiagramObject> diagramObjects = new List<DiagramObject>();
 
             //calculate sizes
             GetSizes(out SizeF[] sizes, out Rectangle3d[] recs);
 
-
-
-            //draw lines
-            for (int i = 0; i < recs.Length; i++)
-            {
-                var crv = DiagramCurve.Create(recs[i].ToNurbsCurve(), m_Colour, m_LineWeight);
-                crv.DrawBitmap(component,g);
-            }
-
-
             //draw text
-            int currentIndex = 0;
+        
             if (m_flip)
             {
-                for (int i = 0; i < this.m_Data.Branches.Count; i++)
-                {
-
-                    for (int j = this.m_Data.Branches[i].Count -1; j >= 0; j--)
-                    {
-
-                        var clr = Color.Transparent;
-                        if (j == 0)
-                        {
-                            clr = m_HeaderColor;
-                        }
-
-
-                        var txt = DiagramText.Create(this.m_Data.Branches[i][j].Value, Diagram.ConvertPoint(recs[currentIndex].Plane.Origin), m_Colour, m_TextSize, TextJustification.BottomLeft, clr, Color.Transparent, -1, m_FontName, sizes[currentIndex], m_Padding, m_Justification);
-                        txt.DrawBitmap(component, g);
-                        currentIndex++;
-                    }
-
-                }
-            }
-            else {
-                for (int i = this.m_Data.Branches.Count - 1; i >= 0; i--)
-                {
-
-                    for (int j = 0; j < this.m_Data.Branches[i].Count; j++)
-                    {
-
-                        var clr = Color.Transparent;
-                        if (i == 0)
-                        {
-                            clr = m_HeaderColor;
-                        }
-
-
-                        var txt = DiagramText.Create(this.m_Data.Branches[i][j].Value, Diagram.ConvertPoint(recs[currentIndex].Plane.Origin), m_Colour, m_TextSize, TextJustification.BottomLeft, clr, Color.Transparent, -1, m_FontName, sizes[currentIndex], m_Padding, m_Justification);
-                        txt.DrawBitmap(component, g);
-                        currentIndex++;
-                    }
-
-                }
-
-
-
-            }
-
-        }
-
-
-
-
-        public override void DrawRhinoPreview(Grasshopper.Kernel.GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
-        {
-
-
-            //calculate sizes
-            GetSizes(out SizeF[] sizes, out Rectangle3d[] recs);
-
-
-
-            //draw lines
-            for (int i = 0; i < recs.Length; i++)
-            {
-                var crv = DiagramCurve.Create(recs[i].ToNurbsCurve(), m_Colour, m_LineWeight);
-                crv.DrawRhinoPreview(component,pipeline, tolerance, xform, colorOverride, doc,  Bake);
-            }
-
-
-            //draw text
-          
-          
-
-            if (m_flip)
-               {
                 int currentIndex = 0;
                 for (int i = 0; i < this.m_Data.Branches.Count; i++)
                 {
@@ -287,11 +206,11 @@ namespace DiagramLibrary
                         }
 
 
-                        var txt = DiagramText.Create(this.m_Data.Branches[i][j].Value, Diagram.ConvertPoint(recs[currentIndex].Plane.Origin), m_Colour, m_TextSize, TextJustification.BottomLeft, clr, Color.Transparent, -1, m_FontName, sizes[currentIndex], m_Padding, m_Justification);
-                        txt.DrawRhinoPreview(component, pipeline, tolerance, xform, colorOverride, doc, Bake);
+                        diagramObjects.Add(DiagramText.Create(this.m_Data.Branches[i][j].Value, Diagram.ConvertPoint(recs[currentIndex].Plane.Origin), m_Colour, m_TextSize, TextJustification.BottomLeft, clr, Color.Transparent, -1, m_FontName, sizes[currentIndex], m_Padding, m_Justification));
+                       
                         currentIndex++;
                     }
-                   
+
                 }
             }
             else
@@ -310,8 +229,7 @@ namespace DiagramLibrary
                         }
 
 
-                        var txt = DiagramText.Create(this.m_Data.Branches[i][j].Value, Diagram.ConvertPoint(recs[currentIndex].Plane.Origin), m_Colour, m_TextSize, TextJustification.BottomLeft, clr, Color.Transparent, -1, m_FontName, sizes[currentIndex], m_Padding, m_Justification);
-                        txt.DrawRhinoPreview(component,pipeline, tolerance, xform, colorOverride, doc,  Bake);
+                        diagramObjects.Add(DiagramText.Create(this.m_Data.Branches[i][j].Value, Diagram.ConvertPoint(recs[currentIndex].Plane.Origin), m_Colour, m_TextSize, TextJustification.BottomLeft, clr, Color.Transparent, -1, m_FontName, sizes[currentIndex], m_Padding, m_Justification));
                         currentIndex++;
                     }
 
@@ -323,39 +241,10 @@ namespace DiagramLibrary
 
 
 
-
-
-
-
-        }
-
-        public override List<DiagramObject> GenerateObjects()
-        {
-            List<DiagramObject> diagramObjects = new List<DiagramObject>();
-
-            //calculate sizes
-            GetSizes(out SizeF[] sizes, out Rectangle3d[] recs);
-
-
-
             //draw lines
             for (int i = 0; i < recs.Length; i++)
             {
                 diagramObjects.Add(DiagramCurve.Create(recs[i].ToNurbsCurve(), m_Colour, m_LineWeight));
-               
-            }
-
-
-            //draw text
-            int currentIndex = 0;
-            for (int i = 0; i < this.m_Data.Branches.Count; i++)
-            {
-
-                for (int j = 0; j < this.m_Data.Branches[i].Count; j++)
-                {
-                    diagramObjects.Add(DiagramText.Create(this.m_Data.Branches[i][j].Value, Diagram.ConvertPoint(recs[currentIndex].Plane.Origin), m_Colour, m_TextSize, TextJustification.BottomLeft, Color.Transparent, Color.Transparent, -1, m_FontName, sizes[currentIndex], m_Padding, m_Justification));
-                                      currentIndex++;
-                }
 
             }
 

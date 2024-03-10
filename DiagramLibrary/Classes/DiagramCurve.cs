@@ -127,20 +127,20 @@ namespace DiagramLibrary
 
 
 
-        public override void DrawBitmap(Grasshopper.Kernel.GH_Component component, Graphics g)
+        public override void DrawBitmap( Graphics g)
         {
 
             if (m_StartCurveEnd != null)
 
             {
-                m_StartCurveEnd.DrawBitmap(component, g, m_Curve.PointAtStart, m_Curve.TangentAtStart);
+                m_StartCurveEnd.DrawBitmap(g, m_Curve.PointAtStart, m_Curve.TangentAtStart);
             }
 
 
 
             if (m_EndCurveEnd != null)
             {
-                m_EndCurveEnd.DrawBitmap(component, g, m_Curve.PointAtEnd, m_Curve.TangentAtEnd);
+                m_EndCurveEnd.DrawBitmap(g, m_Curve.PointAtEnd, m_Curve.TangentAtEnd);
 
             }
 
@@ -158,60 +158,103 @@ namespace DiagramLibrary
 
         }
 
-        public override void DrawRhinoPreview(Grasshopper.Kernel.GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform transform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
+        public override void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
         {
-            Color clr = Diagram.SelectedColor;
-            if (colorOverride == false)
-            {
-                clr = m_Colour;
-            }
-
+            
+            Curve crv = GeneratePreviewGeometry(state, xform, out Color clr, out int thickness);
 
             if (m_StartCurveEnd != null)
 
             {
-                m_StartCurveEnd.DrawRhinoPreview(component, pipeline, tolerance, transform.Clone(), colorOverride, m_Curve.PointAtStart, m_Curve.TangentAtStart,  doc,  Bake);
+                m_StartCurveEnd.DrawRhinoPreview(pipeline, tolerance, xform.Clone(), state, m_Curve.PointAtStart, m_Curve.TangentAtStart);
             }
 
 
             if (m_EndCurveEnd != null)
             {
-                m_EndCurveEnd.DrawRhinoPreview(component, pipeline, tolerance, transform.Clone(), colorOverride, m_Curve.PointAtEnd, m_Curve.TangentAtEnd,  doc,  Bake);
+                m_EndCurveEnd.DrawRhinoPreview( pipeline, tolerance, xform.Clone(), state, m_Curve.PointAtEnd, m_Curve.TangentAtEnd);
             }
-            int thickness = (int)this.m_LineWeight;
+            
+                       
+           pipeline.DrawCurve(crv, clr, thickness);
+           
+            }
+
+
+        public override List<Guid> BakeRhinoPreview( double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outlist = new List<Guid>();
+            Curve crv = GeneratePreviewGeometry(state, xform, out Color clr, out int thickness);
+
+
+
+            if (m_StartCurveEnd != null)
+
+            {
+                outlist.AddRange(m_StartCurveEnd.BakeRhinoPreview(tolerance, xform.Clone(), state, m_Curve.PointAtStart, m_Curve.TangentAtStart, doc, attr));
+            }
+
+
+            if (m_EndCurveEnd != null)
+            {
+                outlist.AddRange(m_EndCurveEnd.BakeRhinoPreview(tolerance, xform.Clone(), state, m_Curve.PointAtEnd, m_Curve.TangentAtEnd, doc, attr));
+            }
+           
+
+
+                
+                attr.ColorSource = Rhino.DocObjects.ObjectColorSource.ColorFromObject;
+                attr.ObjectColor = clr;
+                attr.PlotWeightSource = Rhino.DocObjects.ObjectPlotWeightSource.PlotWeightFromObject;
+                attr.PlotWeight = thickness;
+
+                outlist.Add(doc.Objects.AddCurve(crv, attr));
+            
+            
+            return outlist;
+
+        }
+
+        private Curve GeneratePreviewGeometry(DrawState state, Transform xform, out Color clr, out int thickness)
+        {
+           
+            clr = m_Colour;
+
+            switch (state)
+            {
+                case DrawState.Normal:
+                    break;
+                case DrawState.Selected:
+                    clr = Diagram.SelectedColor;
+
+                    break;
+                case DrawState.NoFills:
+                    clr = Color.Transparent;
+                    break;
+
+            }
+
+
+           
+             thickness = (int)this.m_LineWeight;
             if (thickness <= 0)
             {
                 thickness = 1;
             }
 
             Curve drawCurve = m_Curve;
-            if (transform != Transform.ZeroTransformation)
+            if (xform != Transform.ZeroTransformation)
             {
                 drawCurve = m_Curve.DuplicateCurve();
-                drawCurve.Transform(transform);
-
-               
-            }
-
-
-
-            if (Bake)
-            {
-                var attr = new Rhino.DocObjects.ObjectAttributes();
-                attr.ColorSource = Rhino.DocObjects.ObjectColorSource.ColorFromObject;
-                attr.ObjectColor = clr;
-                attr.PlotWeightSource = Rhino.DocObjects.ObjectPlotWeightSource.PlotWeightFromObject;
-                attr.PlotWeight = thickness;
-                
-                doc.Objects.AddCurve(drawCurve, attr);
-            }
-            else
-            {
-                pipeline.DrawCurve(drawCurve, clr, thickness);
-            }
+                drawCurve.Transform(xform);
 
 
             }
+
+            
+            return drawCurve;
+
+        }
 
 
         public PointF[] GetPoints()

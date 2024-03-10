@@ -15,7 +15,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CreateDiagramHatch()
           : base("CreateDiagramSolidHatch", "DSHatch",
-              "Description",
+              "A componant to create Hatches or Filled Curves to be used in diagrams",
               "Display", "Diagram")
         {
             Modifiers.Add(new CurveModifiers(true, true, false, false));
@@ -26,7 +26,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddBrepParameter("Brep", "B", "Height in Pixels", GH_ParamAccess.item);
+            pManager.AddBrepParameter("Brep", "Brep", "Height in Pixels", GH_ParamAccess.item);
    
             pManager.AddColourParameter("FillColour", "FClr", "Height in Pixels", GH_ParamAccess.item, Diagram.DefaultColor);
        
@@ -65,16 +65,19 @@ namespace DiagramsForGrasshopper
                 return null;
             }
             BoundingBox bb = BoundingBox.Empty;
-     
+
+            BoundingBox locationBB = BoundingBox.Empty;
             for (int i = 0; i < diagramCurves.Count; i++)
             {
                 bb.Union(diagramCurves[i].GetBoundingBox());
+
+                locationBB.Union(Diagram.ConvertPoint(diagramCurves[i].GetBoundingBoxLocation()));
                
             }
 
             SizeF maxSize = new SizeF((float)(bb.Max.X - bb.Min.X), (float)(bb.Max.Y - bb.Min.Y));
 
-            Diagram diagram = Diagram.Create((int)Math.Ceiling(maxSize.Width), (int)Math.Ceiling(maxSize.Height), null, Color.Transparent, 0, Color.Transparent);
+            Diagram diagram = Diagram.Create((int)Math.Ceiling(maxSize.Width), (int)Math.Ceiling(maxSize.Height), null, Color.Transparent, 0, Color.Transparent, Diagram.ConvertPoint(locationBB.Min));
 
             for (int i = 0; i < diagramCurves.Count; i++)
             {

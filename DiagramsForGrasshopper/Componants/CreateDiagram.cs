@@ -26,7 +26,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CreateDiagram()
           : base("CreateDiagram", "CreateDiagram",
-              "Description",
+              "A componant to create diagrams from mutiple Diagram Objects",
               "Display", "Diagram")
         {
         }
@@ -36,8 +36,8 @@ namespace DiagramsForGrasshopper
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddIntegerParameter("Height", "H", "Diagram Height in Pixels", GH_ParamAccess.item, -1);
-            pManager.AddIntegerParameter("Width", "W", "Diagram Width in Pixels", GH_ParamAccess.item, -1);
+            pManager.AddIntegerParameter("Height", "Hght", "Diagram Height in Pixels", GH_ParamAccess.item, -1);
+            pManager.AddIntegerParameter("Width", "Wdth", "Diagram Width in Pixels", GH_ParamAccess.item, -1);
             pManager.AddGenericParameter("DiagramObjects", "DObjs", "Diagram objects or Rhino Geometry To Add to Diagram", GH_ParamAccess.list);
     
             pManager.AddGenericParameter("Title", "Title", "Optional Diagram Title", GH_ParamAccess.item);

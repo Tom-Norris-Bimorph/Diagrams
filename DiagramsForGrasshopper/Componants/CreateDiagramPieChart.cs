@@ -16,7 +16,7 @@ namespace DiagramsForGrasshopper
         /// Initializes a new instance of the CreatePieChart class.
         /// </summary>
         public CreateDiagramPieChart()
-          : base("CreateDiagramPieChart", "DPie","Description",
+          : base("CreateDiagramPieChart", "DPie", "A componant to create Pie Charts to be used in diagrams",
                 "Display", "Diagram")
         {
             Modifiers.Add(new TextModifiers(true, true, true, true, false, false, false, false));
@@ -28,16 +28,16 @@ namespace DiagramsForGrasshopper
         /// </summary>
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddNumberParameter("Data", "D", "A list of data to repsent in a pie chart", GH_ParamAccess.list);
-            pManager.AddTextParameter("DataLabels", "DA", "An optional list of Text labels for each of the data items", GH_ParamAccess.list,new List<string> { string.Empty});
+            pManager.AddNumberParameter("Data", "Data", "A list of data to repsent in a pie chart", GH_ParamAccess.list);
+            pManager.AddTextParameter("DataLabels", "DLbl", "An optional list of Text labels for each of the data items", GH_ParamAccess.list,new List<string> { string.Empty});
           
-            pManager.AddColourParameter("DataColour", "DC", "An optional list of Colours for each of the data items", GH_ParamAccess.list, DiagramColour.GetColors(1));
-            pManager.AddColourParameter("DataLineColour", "DLC", "An optional list of Colours for each of the data items", GH_ParamAccess.list, DiagramColour.GetColors(1));
-            pManager.AddPointParameter("Location", "L", "The point on the target for the label", GH_ParamAccess.item, Point3d.Origin);
+            pManager.AddColourParameter("DataColour", "DClr", "An optional list of Colours for each of the data items", GH_ParamAccess.list, DiagramColour.GetColors(1));
+            pManager.AddColourParameter("DataLineColour", "DLClr", "An optional list of Colours for each of the data items", GH_ParamAccess.list, DiagramColour.GetColors(1));
+            pManager.AddPointParameter("Location", "Loc", "The point on the target for the label", GH_ParamAccess.item, Point3d.Origin);
             pManager.HideParameter(1);
-            pManager.AddNumberParameter("OuterRadius", "OR", "Offset from Label Point", GH_ParamAccess.item, 100);
-            pManager.AddNumberParameter("InnerRadius", "IR", "Offset from Label Point", GH_ParamAccess.item, 30);
-           pManager.AddNumberParameter("LabelRadius", "LR", "Offset from Label Point", GH_ParamAccess.item, 130);
+            pManager.AddNumberParameter("OuterRadius", "ORad", "Offset from Label Point", GH_ParamAccess.item, 100);
+            pManager.AddNumberParameter("InnerRadius", "IRad", "Offset from Label Point", GH_ParamAccess.item, 30);
+           pManager.AddNumberParameter("LabelRadius", "LRad", "Offset from Label Point", GH_ParamAccess.item, 130);
          
 
         }

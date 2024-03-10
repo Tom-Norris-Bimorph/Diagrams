@@ -1,5 +1,6 @@
 ﻿using DiagramLibrary;
 using Grasshopper.Kernel;
+using Rhino;
 using Rhino.Geometry;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DiagramsForGrasshopper
 {
-    public abstract class DiagramComponent : GH_Component
+    public abstract class DiagramComponent : GH_Component, IGH_BakeAwareObject
 
     {
 
@@ -111,8 +112,12 @@ namespace DiagramsForGrasshopper
                             diagramGoo.CastTo(out Diagram diagram);
 
                             if (diagram == null) { continue; }
-                                                       
-                            diagram.DrawRhinoPreview(this, args.Display, GH_Component.DocumentTolerance(), m_Xform, this.m_attributes.Selected, null, false);
+
+                            DrawState state = DrawState.Normal;
+                            if (this.m_attributes.Selected) {
+                                state = DrawState.Selected;
+                            }
+                            diagram.DrawRhinoPreview(args.Display, GH_Component.DocumentTolerance(), m_Xform, state);
                         }
                     }
 
@@ -154,7 +159,10 @@ namespace DiagramsForGrasshopper
 
                     if (diagram == null) { continue; }
 
-                    diagram.DrawRhinoPreview(this, null, GH_Component.DocumentTolerance(), m_Xform,false,doc,true);
+                    DrawState state = DrawState.Normal;
+                
+
+                    diagram.BakeRhinoPreview(GH_Component.DocumentTolerance(), m_Xform, state,doc,doc.CreateDefaultAttributes(),out List<Guid> guids);
                 }
             }
         }
@@ -164,7 +172,7 @@ namespace DiagramsForGrasshopper
             if (m_VersionChecked == false)
             {
                 string libraryVersion = DiagramLibrary.Diagram.LibraryVersion();
-                string componantLibraryVersion = "1.0.0.0";
+                string componantLibraryVersion = "1.0.0.1";
                 VersionComparision compareVersion = CompareVersion(libraryVersion, componantLibraryVersion);
                 switch (compareVersion)
                 {
@@ -226,6 +234,72 @@ namespace DiagramsForGrasshopper
             LibraryVersionIsNewer,
             ComponantVersionIsNewer
         }
+
+
+
+
+        public override void BakeGeometry(RhinoDoc doc, List<Guid> obj_ids)
+        {
+            obj_ids = new List<Guid>();
+
+            var diagramOutput = this.Params.Output[1].VolatileData;
+          
+            for (int i = 0; i < diagramOutput.PathCount; i++)
+            {
+                var diagramGooList = diagramOutput.get_Branch(diagramOutput.Paths[i]);
+
+                for (int j = 0; j < diagramGooList.Count; j++)
+                {
+                    var diagramGoo = diagramGooList[j] as Grasshopper.Kernel.Types.IGH_Goo;
+                    diagramGoo.CastTo(out Diagram diagram);
+
+                    if (diagram == null) { continue; }
+
+                    DrawState state = DrawState.Normal;
+
+
+                    diagram.BakeRhinoPreview(GH_Component.DocumentTolerance(), m_Xform, state, doc, doc.CreateDefaultAttributes(), out List<Guid> guids);
+                    obj_ids.AddRange(guids);
+                    
+                }
+            }
+
+
+
+         
+        }
+
+        public override void BakeGeometry(RhinoDoc doc, Rhino.DocObjects.ObjectAttributes att, List<Guid> obj_ids)
+        {
+            obj_ids = new List<Guid>();
+
+            var diagramOutput = this.Params.Output[1].VolatileData;
+
+            for (int i = 0; i < diagramOutput.PathCount; i++)
+            {
+                var diagramGooList = diagramOutput.get_Branch(diagramOutput.Paths[i]);
+
+                for (int j = 0; j < diagramGooList.Count; j++)
+                {
+                    var diagramGoo = diagramGooList[j] as Grasshopper.Kernel.Types.IGH_Goo;
+                    diagramGoo.CastTo(out Diagram diagram);
+
+                    if (diagram == null) { continue; }
+
+                    DrawState state = DrawState.Normal;
+
+
+                    diagram.BakeRhinoPreview(GH_Component.DocumentTolerance(), m_Xform, state, doc, att, out List<Guid> guids);
+                    obj_ids.AddRange(guids);
+
+                }
+            }
+
+
+        }
+
+        public override bool IsBakeCapable => true;
+
 
 
 

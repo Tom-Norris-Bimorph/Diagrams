@@ -75,6 +75,8 @@
     <Compile Include="Classes\DiagramObject.cs" />
     <Compile Include="Classes\DiagramText.cs" />
     <Compile Include="Classes\NoDrawDiagramObject.cs" />
+    <Compile Include="Classes\DrawState.cs" />
+    <Compile Include="Classes\Report.cs" />
     <Compile Include="DiagramLibraryComponent.cs" />
     <Compile Include="DiagramLibraryInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

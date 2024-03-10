@@ -47,9 +47,10 @@ namespace DiagramLibrary
 
     
 
-        public void DrawRhinoPreview( Grasshopper.Kernel.GH_Component component,Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform transform, bool colorOverride,Point3d location, Vector3d rotation, Rhino.RhinoDoc doc, bool Bake)
-
-        {
+        public void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform transform, DrawState state,Point3d location, Vector3d rotation)
+        { 
+           
+        
 
             Vector3d flipCorrectedDirection = m_BaseDirection;
             if (m_Flipped) {
@@ -59,15 +60,36 @@ namespace DiagramLibrary
             var positionedObject = m_Object.SetLocationAndDirectionForDrawing(m_BasePoint, flipCorrectedDirection, location, rotation);
             if (positionedObject != null)
             {
-                positionedObject.DrawRhinoPreview( component,pipeline,  tolerance,  transform, colorOverride, doc,  Bake);
+               positionedObject.DrawRhinoPreview( pipeline,  tolerance,  transform, state);
             }
+           
         }
 
 
-        public void DrawBitmap(Grasshopper.Kernel.GH_Component component,Graphics g, Point3d location, Vector3d rotation) {
+        public List<Guid> BakeRhinoPreview( double tolerance, Transform transform, DrawState state, Point3d location, Vector3d rotation, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+
+
+            Vector3d flipCorrectedDirection = m_BaseDirection;
+            if (m_Flipped)
+            {
+                flipCorrectedDirection.Reverse();
+            }
+
+            var positionedObject = m_Object.SetLocationAndDirectionForDrawing(m_BasePoint, flipCorrectedDirection, location, rotation);
+            if (positionedObject != null)
+            {
+                outList.AddRange(positionedObject.BakeRhinoPreview(tolerance, transform, state,doc,attr));
+            }
+            return outList;
+        }
+
+
+        public void DrawBitmap(Graphics g, Point3d location, Vector3d rotation) {
             var positionedObject = m_Object.SetLocationAndDirectionForDrawing(m_BasePoint, m_BaseDirection,location, rotation);
             if (positionedObject != null) {
-                positionedObject.DrawBitmap( component,g);
+                positionedObject.DrawBitmap(g);
             }
         }
 

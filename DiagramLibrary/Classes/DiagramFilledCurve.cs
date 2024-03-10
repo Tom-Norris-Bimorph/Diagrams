@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DiagramLibrary
 {
-   public  class DiagramFilledCurve : BaseCurveDiagramObject
+    public class DiagramFilledCurve : BaseCurveDiagramObject
     {
-      
+
         protected Color m_LineColor;
         protected Color m_BackColour;
         protected System.Drawing.Drawing2D.HatchStyle m_hatchStyle;
@@ -23,7 +23,7 @@ namespace DiagramLibrary
         protected Rhino.Display.DisplayMaterial m_CachedMaterial = null;
         protected Rhino.Display.DisplayMaterial m_CachedSelectedMaterial = null;
 
-        protected List<DiagramCurve> m_InnerCurves =  new List<DiagramCurve>();
+        protected List<DiagramCurve> m_InnerCurves = new List<DiagramCurve>();
         protected List<DiagramCurve> m_OuterCurves = new List<DiagramCurve>();
 
 
@@ -39,7 +39,7 @@ namespace DiagramLibrary
         public override Color Colour
         {
             get { return m_Colour; }
-    set {
+            set {
                 m_Colour = value;
                 m_CachedMaterial = null;
             }
@@ -56,8 +56,8 @@ namespace DiagramLibrary
 
             diagramFilledCurve.m_LineColor = LineColour;
 
-         
-                diagramFilledCurve.m_OuterCurves.Add(DiagramCurve.Create(curve, LineColour, LineWeight));
+
+            diagramFilledCurve.m_OuterCurves.Add(DiagramCurve.Create(curve, LineColour, LineWeight));
 
             return diagramFilledCurve;
         }
@@ -71,12 +71,12 @@ namespace DiagramLibrary
             DiagramFilledCurve diagramFilledCurve = new DiagramFilledCurve();
             diagramFilledCurve.m_Colour = Colour;
             diagramFilledCurve.m_LineWeight = LineWeight;
-          
-            diagramFilledCurve. m_LineColor = LineColour;
+
+            diagramFilledCurve.m_LineColor = LineColour;
 
             for (int i = 0; i < OuterCurves.Length; i++)
             {
-                diagramFilledCurve. m_OuterCurves.Add(DiagramCurve.Create(OuterCurves[i], LineColour, LineWeight));
+                diagramFilledCurve.m_OuterCurves.Add(DiagramCurve.Create(OuterCurves[i], LineColour, LineWeight));
             }
             if (InnerCurves != null)
             {
@@ -107,7 +107,7 @@ namespace DiagramLibrary
 
             }
 
-           
+
 
             return hatches;
         }
@@ -117,7 +117,7 @@ namespace DiagramLibrary
             DiagramFilledCurve diagramFilledCurve = new DiagramFilledCurve();
             diagramFilledCurve.m_Colour = m_Colour;
             diagramFilledCurve.m_LineWeight = m_LineWeight;
-                     diagramFilledCurve.m_LineColor = m_LineColor;
+            diagramFilledCurve.m_LineColor = m_LineColor;
 
             for (int i = 0; i < m_OuterCurves.Count; i++)
             {
@@ -128,7 +128,7 @@ namespace DiagramLibrary
             {
                 diagramFilledCurve.m_InnerCurves.Add(m_InnerCurves[i].DuplicateDiagramCurve());
             }
-          
+
             return diagramFilledCurve;
         }
 
@@ -144,7 +144,7 @@ namespace DiagramLibrary
 
 
             DiagramFilledCurve clone = Duplicate() as DiagramFilledCurve;
-                           
+
 
             for (int i = 0; i < clone.m_InnerCurves.Count; i++)
 
@@ -181,7 +181,7 @@ namespace DiagramLibrary
             if (isSolid)
             {
                 return new SolidBrush(m_Colour);
-                
+
             }
             else {
                 return new System.Drawing.Drawing2D.HatchBrush(m_hatchStyle, m_Colour, m_BackColour);
@@ -205,7 +205,7 @@ namespace DiagramLibrary
         }
 
 
-       
+
 
 
         public override PointF GetBoundingBoxLocation()
@@ -216,22 +216,22 @@ namespace DiagramLibrary
 
 
 
-        public override void DrawBitmap( Grasshopper.Kernel.GH_Component component, Graphics g)
+        public override void DrawBitmap(Graphics g)
 
         {
 
-            
+
 
             System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-           
 
-           List<Point3d> points3d = new List<Point3d>();
+
+            List<Point3d> points3d = new List<Point3d>();
 
             foreach (DiagramCurve crv in m_OuterCurves)
             {
-               
+
                 PointF[] pts = crv.GetPoints();
-                if (pts == null) { continue;  }
+                if (pts == null) { continue; }
                 path.AddLines(pts);
             }
 
@@ -249,9 +249,9 @@ namespace DiagramLibrary
 
 
 
-          
-        
-            g.FillPath(this.GetBrush(),path);
+
+
+            g.FillPath(this.GetBrush(), path);
 
             if (m_LineWeight > 0) {
                 g.DrawPath(this.GetPen(), path);
@@ -262,123 +262,154 @@ namespace DiagramLibrary
         }
 
 
-        public override void DrawRhinoPreview( Grasshopper.Kernel.GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, bool colorOverride, Rhino.RhinoDoc doc, bool Bake)
+        public override void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
         {
+            List<Brep> breps = GeneratePreviewGeometry(tolerance, xform, state, out Color clr, out Rhino.Display.DisplayMaterial material, out bool drawLines);
 
-            Color clr = Diagram.SelectedColor;
-            Rhino.Display.DisplayMaterial material = null;
-          bool drawLines = m_LineWeight > 0;
-            if (colorOverride == false)
+
+            foreach (Brep item in breps)
+
             {
-                clr = m_Colour;
-
-                if (m_CachedMaterial == null)
-                {
-                    m_CachedMaterial = new Rhino.Display.DisplayMaterial(clr, 1.0 - (clr.A / 255));
-                }
-
-                material = m_CachedMaterial;
-              
 
 
-            }
-            else {
-                drawLines = true;
-
-                if (m_CachedSelectedMaterial == null)
-                {
-                    m_CachedSelectedMaterial = new Rhino.Display.DisplayMaterial(clr, 1.0 - (clr.A / 255));
-                }
-                material = m_CachedSelectedMaterial;
+                pipeline.DrawBrepShaded(item, material);
+                  
             }
 
 
+
+            if (drawLines)
+            {
+                foreach (var item in m_OuterCurves)
+                {
+                   item.DrawRhinoPreview(pipeline, tolerance, xform, state);
+                }
+                foreach (var item in m_InnerCurves)
+                {
+                    item.DrawRhinoPreview(pipeline, tolerance, xform, state);
+                }
+                                             
+
+            }
+            return ;
+        }
+
+        public override List<Guid> BakeRhinoPreview(double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+            List<Brep> breps = GeneratePreviewGeometry( tolerance,  xform,  state, out Color clr, out Rhino.Display.DisplayMaterial material, out bool drawLines);
+
+            if (state != DrawState.NoFills )
+            {
+                if (clr != Color.Transparent)
+                {
+
+                    foreach (Brep item in breps)
+
+                    {
+
+                        attr.ColorSource = Rhino.DocObjects.ObjectColorSource.ColorFromObject;
+                        attr.ObjectColor = clr;
+                        string name = "DiagramsMaterial_" + material.Diffuse.R.ToString() + "_" + material.Diffuse.G.ToString() + "_" + material.Diffuse.B.ToString() + "_" + material.Transparency.ToString();
+
+                        int materialIndex = doc.Materials.Find(name, true);
+
+                        if (materialIndex < 0)
+                        {
+                            var rhinoMaterial = new Rhino.DocObjects.Material();
+                            rhinoMaterial.DiffuseColor = material.Diffuse;
+                            rhinoMaterial.Transparency = material.Transparency;
+
+                            rhinoMaterial.Name = name;
+                            materialIndex = doc.Materials.Add(rhinoMaterial, false);
+                        }
+
+                        attr.MaterialSource = Rhino.DocObjects.ObjectMaterialSource.MaterialFromObject;
+                        attr.MaterialIndex = materialIndex;
+
+                        outList.Add(doc.Objects.AddBrep(item, attr));
+
+                    }
+                }
+            }
             
 
+
+
+            if (drawLines)
+            {
+                foreach (var item in m_OuterCurves)
+                {
+                    outList.AddRange(item.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+                }
+                foreach (var item in m_InnerCurves)
+                {
+                    outList.AddRange(item.BakeRhinoPreview( tolerance, xform, state, doc, attr));
+                }
+
+
+            }
+            return outList;
+        }
+
+        public List<Brep> GeneratePreviewGeometry(double tolerance, Transform xform, DrawState state, out Color clr, out Rhino.Display.DisplayMaterial material, out bool drawLines)
+        {
+            List<Brep> outlist = new List<Brep>();
+                clr = m_Colour;
+             drawLines = m_LineWeight > 0;
+            material = null;
+
+            switch (state)
+            {
+                case DrawState.Normal:
+                    if (m_CachedMaterial == null)
+                    {
+                        m_CachedMaterial = new Rhino.Display.DisplayMaterial(clr, 1.0 - (clr.A / 255));
+                    }
+
+                    material = m_CachedMaterial;
+                    break;
+                case DrawState.Selected:
+                    clr = Diagram.SelectedColor;
+                    drawLines = true;
+                    if (m_CachedSelectedMaterial == null)
+                    {
+                        m_CachedSelectedMaterial = new Rhino.Display.DisplayMaterial(clr, 1.0 - (clr.A / 255));
+                    }
+                    material = m_CachedSelectedMaterial;
+                    break;
+                case DrawState.NoFills:
+                   
+                    break;
+
+            }
+                                          
             List<DiagramCurve> dcrvs = new List<DiagramCurve>();
             dcrvs.AddRange(m_OuterCurves);
             dcrvs.AddRange(m_InnerCurves);
             Curve[] crvs = dcrvs.Select(x => (Curve)x.GetCurve()).ToArray();
-             Brep[] breps = Brep.CreatePlanarBreps(crvs, tolerance);
+            Brep[] breps = Brep.CreatePlanarBreps(crvs, tolerance);
             if (breps != null)
             {
-                //Hatch Experiments to match bush
-                // Rhino.DocObjects.HatchPattern pattern = Rhino.RhinoDoc.ActiveDoc.HatchPatterns[1];
-
-                // Hatch[] hatches = Hatch.Create(crvs, 1, m_hatchRotation, m_hatchScale, tolerance);
-
-                // var texture = new Rhino.DocObjects.Texture();
-                // texture.TextureType = Rhino.DocObjects.TextureType.Bitmap;
-
-
-            
-
-                // material.SetBitmapTexture(texture)
 
                 foreach (Brep item in breps)
-                //  foreach (Hatch hatch in hatches)
                 {
                     if (xform != Transform.ZeroTransformation)
                     {
                         item.Transform(xform);
 
                     }
-                    //pipeline.DrawBrepShaded(item, mat);
 
+                    outlist.Add(item);
 
-
-                    if (Bake)
-                    {
-                        var attr = new Rhino.DocObjects.ObjectAttributes();
-                        attr.ColorSource = Rhino.DocObjects.ObjectColorSource.ColorFromObject;
-                        attr.ObjectColor = clr;
-                        string name = "DiagramsMaterial_" + material.Diffuse.R.ToString() + "_" + material.Diffuse.G.ToString() + "_" + material.Diffuse.B.ToString() + "_" + material.Transparency.ToString();
-
-                        int materialIndex =  doc.Materials.Find(name, true);
-
-                        if (materialIndex < 0) {
-                            var rhinoMaterial = new Rhino.DocObjects.Material();
-                            rhinoMaterial.DiffuseColor = material.Diffuse;
-                            rhinoMaterial.Transparency = material.Transparency;
-
-                            rhinoMaterial.Name = name;
-                               materialIndex = doc.Materials.Add(rhinoMaterial, false);
-                        }
-                       
-                        attr.MaterialSource = Rhino.DocObjects.ObjectMaterialSource.MaterialFromObject;
-                        attr.MaterialIndex = materialIndex;
-
-                        doc.Objects.AddBrep(item, attr);
-                    }
-                    else
-                    {
-                      
-                        pipeline.DrawBrepShaded(item, material);
-                    }
-
-
-                    
                 }
             }
+            
 
-
-
-            if (drawLines) {
-                foreach (var item in m_OuterCurves)
-                {
-                    item.DrawRhinoPreview( component,pipeline, tolerance,xform, colorOverride , doc,  Bake);
-                }
-                foreach (var item in m_InnerCurves)
-                {
-                    item.DrawRhinoPreview( component,pipeline, tolerance,xform, colorOverride, doc, Bake);
-                }
-
-            }
-
-
+            return outlist;
         }
 
-       
+
 
 
         public new Pen GetPen()
@@ -386,5 +417,6 @@ namespace DiagramLibrary
             return new Pen(m_LineColor, m_LineWeight);
         }
 
+    
     }
 }

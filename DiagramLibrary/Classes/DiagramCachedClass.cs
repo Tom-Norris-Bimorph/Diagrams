@@ -34,24 +34,41 @@ namespace DiagramLibrary
         public abstract List<DiagramObject> GenerateObjects();
 
 
-        public override void DrawBitmap(GH_Component component, Graphics g)
+        public override void DrawBitmap( Graphics g)
         {
 
             for (int i = 0; i < this.m_ObjectCache.Count; i++)
             {
-                this.m_ObjectCache[i].DrawBitmap(component, g);
+                this.m_ObjectCache[i].DrawBitmap( g);
             }
         }
 
-        public override void DrawRhinoPreview(GH_Component component, Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, bool colorOverride, RhinoDoc doc, bool Bake)
+       
+
+
+        public override void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
         {
-            
-            for (int i = 0; i < this.m_ObjectCache.Count; i++)
+
+            for (int i = 0; i < m_ObjectCache.Count; i++)
             {
-                this.m_ObjectCache[i].DrawRhinoPreview(component, pipeline, tolerance, xform, colorOverride, doc, Bake);
+                m_ObjectCache[i].DrawRhinoPreview(pipeline, tolerance, xform, state);
             }
-                       
+            return;
+
         }
+
+
+        public override List<Guid> BakeRhinoPreview(double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        {
+            List<Guid> outList = new List<Guid>();
+            for (int i = 0; i < m_ObjectCache.Count; i++)
+            {
+                outList.AddRange(m_ObjectCache[i].BakeRhinoPreview(tolerance, xform, state, doc, attr));
+            }
+            return outList;
+
+        }
+
 
 
         public override BoundingBox GetBoundingBox()

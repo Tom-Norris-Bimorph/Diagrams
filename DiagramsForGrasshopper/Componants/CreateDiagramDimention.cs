@@ -14,7 +14,7 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public CreateDiagramDimention()
           : base("DiagramDimention", "DDimention",
-              "Description",
+              "A componant to create Dimentions to be used in diagrams",
              "Display", "Diagram")
         {
             Modifiers.Add(new TextModifiers(true, true, true,false,false,true,false, false));
@@ -26,12 +26,12 @@ namespace DiagramsForGrasshopper
         /// </summary>
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddPointParameter("Point1", "P1", "Point1", GH_ParamAccess.item);
-            pManager.AddPointParameter("Point2", "P1", "Point1", GH_ParamAccess.item);
-            pManager.AddNumberParameter("Offset", "O", "Offset from Object", GH_ParamAccess.item, 10);
-            pManager.AddTextParameter("TextOverride", "TO", "Text to override of the dimention", GH_ParamAccess.item, string.Empty);
-            pManager.AddTextParameter("Suffix", "S", "Suffix of the dimention", GH_ParamAccess.item, string.Empty);
-            pManager.AddIntegerParameter("Round", "R", "The number of decimals the text will round to", GH_ParamAccess.item, 2);
+            pManager.AddPointParameter("Point1", "Pt1", "Point1", GH_ParamAccess.item);
+            pManager.AddPointParameter("Point2", "Pt1", "Point1", GH_ParamAccess.item);
+            pManager.AddNumberParameter("Offset", "Offset", "Offset from Object", GH_ParamAccess.item, 10);
+            pManager.AddTextParameter("TextOverride", "TOvrd", "Text to override of the dimention", GH_ParamAccess.item, string.Empty);
+            pManager.AddTextParameter("Suffix", "Sfx", "Suffix of the dimention", GH_ParamAccess.item, string.Empty);
+            pManager.AddIntegerParameter("Round", "Rnd", "The number of decimals the text will round to", GH_ParamAccess.item, 2);
 
         }
 
