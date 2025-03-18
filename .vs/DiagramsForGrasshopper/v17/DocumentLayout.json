@@ -1,0 +1,726 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramcurvecollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramcurvecollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramcurve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramcurve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\diagramobjects\\idiagramobjec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\diagramobjects\\idiagramobjec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\attributes\\diagramattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\attributes\\diagramattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramcurveend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramcurveend.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramtext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramtext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\defaults\\diagramdefaults.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\defaults\\diagramdefaults.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramgoo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramgoo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramcoordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramcoordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramobjectconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramobjectconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\idiagramcoordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\idiagramcoordinatesystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\diagramobjects\\idiagramobjectset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\diagramobjects\\idiagramobjectset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagraminfo\\diagraminfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagraminfo\\diagraminfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\diagraminfo\\idiagraminfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\diagraminfo\\idiagraminfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagraminfo\\diagramtitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagraminfo\\diagramtitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\diagraminfo\\idiagramtitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\diagraminfo\\idiagramtitle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramframe\\diagramframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramframe\\diagramframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\frame\\idiagramframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\frame\\idiagramframe.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\idiagram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\idiagram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\digramobjects\\diagramobjectset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\digramobjects\\diagramobjectset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramcachedclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramcachedclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramcolour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramcolour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\ibasecurvediagramobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\ibasecurvediagramobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\reports\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\reports\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26E0B3E3-8997-42D6-BC6E-BA525E5D0935}|DiagramsForGrasshopper\\DiagramsForGrasshopper.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramsforgrasshopper\\componants\\creatediagram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26E0B3E3-8997-42D6-BC6E-BA525E5D0935}|DiagramsForGrasshopper\\DiagramsForGrasshopper.csproj|solutionrelative:diagramsforgrasshopper\\componants\\creatediagram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramlabel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\idiagramattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\idiagramattributes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\enums\\drawstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\enums\\drawstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\reports\\ireport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\reports\\ireport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\reports\\reportitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\reports\\reportitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\interfaces\\reports\\ireportitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\interfaces\\reports\\ireportitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\diagramlibrarycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\diagramlibrarycomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagrampiechart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagrampiechart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramfilledrectangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramfilledrectangle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramfilledcurve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramfilledcurve.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramdimention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramdimention.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\model\\core\\library\\diagramimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\model\\core\\library\\diagramimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26E0B3E3-8997-42D6-BC6E-BA525E5D0935}|DiagramsForGrasshopper\\DiagramsForGrasshopper.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramsforgrasshopper\\classes\\curvemodifiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26E0B3E3-8997-42D6-BC6E-BA525E5D0935}|DiagramsForGrasshopper\\DiagramsForGrasshopper.csproj|solutionrelative:diagramsforgrasshopper\\classes\\curvemodifiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 37,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Diagram.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Diagram.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\Diagram.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Diagram.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\Diagram.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAADwvwkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:05:19.993Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "DiagramObjectConverter.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramObjectConverter.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramObjectConverter.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramObjectConverter.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramObjectConverter.cs",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAowKAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:49:29.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IDiagramCoordinateSystem.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramCoordinateSystem.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramCoordinateSystem.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramCoordinateSystem.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramCoordinateSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:48:58.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IDiagramObjectSet.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjectSet.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjectSet.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjectSet.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjectSet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:48:37.348Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DiagramInfo.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramInfo.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramInfo.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramInfo.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:47:04.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IDiagramInfo.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramInfo.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramInfo.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramInfo.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:45:17.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DiagramTitle.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramTitle.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramTitle.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramTitle.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramInfo\\DiagramTitle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:44:58.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IDiagramTitle.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramTitle.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramTitle.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramTitle.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramInfo\\IDiagramTitle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:44:34.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DiagramFrame.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramFrame\\DiagramFrame.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramFrame\\DiagramFrame.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramFrame\\DiagramFrame.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramFrame\\DiagramFrame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:44:01.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IDiagramFrame.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\Frame\\IDiagramFrame.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\Frame\\IDiagramFrame.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\Frame\\IDiagramFrame.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\Frame\\IDiagramFrame.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:43:20.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "IDiagram.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\IDiagram.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\IDiagram.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\IDiagram.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\IDiagram.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:41:59.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DiagramObjectSet.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DigramObjects\\DiagramObjectSet.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DigramObjects\\DiagramObjectSet.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DigramObjects\\DiagramObjectSet.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DigramObjects\\DiagramObjectSet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:41:23.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DiagramCoordinateSystem.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCoordinateSystem.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramCoordinateSystem.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCoordinateSystem.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramCoordinateSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:40:22.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DiagramColour.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramColour.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramColour.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramColour.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramColour.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T23:09:21.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DiagramDefaults.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Defaults\\DiagramDefaults.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\Defaults\\DiagramDefaults.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Defaults\\DiagramDefaults.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\Defaults\\DiagramDefaults.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:34:57.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CreateDiagram.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramsForGrasshopper\\Componants\\CreateDiagram.cs",
+              "RelativeDocumentMoniker": "DiagramsForGrasshopper\\Componants\\CreateDiagram.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramsForGrasshopper\\Componants\\CreateDiagram.cs",
+              "RelativeToolTip": "DiagramsForGrasshopper\\Componants\\CreateDiagram.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:34:03.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DiagramGoo.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramGoo.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramGoo.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramGoo.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramGoo.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwDQAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:33:33.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DiagramCurveEnd.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCurveEnd.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramCurveEnd.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCurveEnd.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramCurveEnd.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAApwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:19:18.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IDiagramAttributes.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramAttributes.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramAttributes.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramAttributes.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\IDiagramAttributes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:12:21.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DiagramAttributes.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Attributes\\DiagramAttributes.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\Attributes\\DiagramAttributes.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Attributes\\DiagramAttributes.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\Attributes\\DiagramAttributes.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:11:28.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "DrawState.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Enums\\DrawState.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Enums\\DrawState.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Enums\\DrawState.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Enums\\DrawState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:05:53.244Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "DiagramLabel.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramLabel.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramLabel.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramLabel.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramLabel.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAQwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T22:03:40.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IReport.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReport.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReport.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReport.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:59:16.69Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "DiagramLibraryComponent.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\DiagramLibraryComponent.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\DiagramLibraryComponent.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\DiagramLibraryComponent.cs",
+              "RelativeToolTip": "DiagramLibrary\\DiagramLibraryComponent.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:38:01.68Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IReportItem.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReportItem.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReportItem.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReportItem.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\Reports\\IReportItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:36:40.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ReportItem.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Reports\\ReportItem.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\Reports\\ReportItem.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Reports\\ReportItem.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\Reports\\ReportItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:36:03.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Report.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Reports\\Report.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\Reports\\Report.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\Reports\\Report.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\Reports\\Report.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwAgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:44.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DiagramCurve.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCurve.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramCurve.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCurve.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramCurve.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:02.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "DiagramPieChart.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramPieChart.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramPieChart.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramPieChart.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramPieChart.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:02.831Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "DiagramTable.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramTable.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramTable.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramTable.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:02.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "DiagramFilledRectangle.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramFilledRectangle.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramFilledRectangle.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramFilledRectangle.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramFilledRectangle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:02.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "DiagramFilledCurve.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramFilledCurve.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramFilledCurve.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramFilledCurve.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramFilledCurve.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:02.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "DiagramDimention.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramDimention.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramDimention.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramDimention.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramDimention.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:02.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "DiagramCachedClass.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCachedClass.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramCachedClass.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCachedClass.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramCachedClass.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:01.964Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "DiagramImage.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramImage.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramImage.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramImage.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramImage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:01.79Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DiagramCurveCollection.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCurveCollection.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramCurveCollection.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramCurveCollection.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramCurveCollection.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAmwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:01.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DiagramText.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramText.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramText.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramText.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramText.cs",
+              "ViewState": "AgIAAJEBAAAAAAAAAAAUwCAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:27:01.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IDiagramObjec.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjec.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjec.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjec.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Interfaces\\DiagramObjects\\IDiagramObjec.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:26:01.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DiagramObject.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramObject.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\DiagramObject.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\DiagramObject.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\DiagramObject.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:22:02.544Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "CurveModifiers.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "RelativeDocumentMoniker": "DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "RelativeToolTip": "DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:20:04.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IBaseCurveDiagramObject.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\IBaseCurveDiagramObject.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Model\\Core\\Library\\IBaseCurveDiagramObject.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Model\\Core\\Library\\IBaseCurveDiagramObject.cs",
+              "RelativeToolTip": "DiagramLibrary\\Model\\Core\\Library\\IBaseCurveDiagramObject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T20:57:24.166Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

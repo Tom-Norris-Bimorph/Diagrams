@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramlibrary\\classes\\basecurvediagramobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7685DF9D-4700-493C-99C6-4247F6F9B43B}|DiagramLibrary\\DiagramLibrary.csproj|solutionrelative:diagramlibrary\\classes\\basecurvediagramobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26E0B3E3-8997-42D6-BC6E-BA525E5D0935}|DiagramsForGrasshopper\\DiagramsForGrasshopper.csproj|c:\\users\\thomasnorris\\documents\\github\\diagrams\\diagramsforgrasshopper\\classes\\curvemodifiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26E0B3E3-8997-42D6-BC6E-BA525E5D0935}|DiagramsForGrasshopper\\DiagramsForGrasshopper.csproj|solutionrelative:diagramsforgrasshopper\\classes\\curvemodifiers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CurveModifiers.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "RelativeDocumentMoniker": "DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "RelativeToolTip": "DiagramsForGrasshopper\\Classes\\CurveModifiers.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T21:20:04.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BaseCurveDiagramObject.cs",
+              "DocumentMoniker": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Classes\\BaseCurveDiagramObject.cs",
+              "RelativeDocumentMoniker": "DiagramLibrary\\Classes\\BaseCurveDiagramObject.cs",
+              "ToolTip": "C:\\Users\\ThomasNorris\\Documents\\GitHub\\Diagrams\\DiagramLibrary\\Classes\\BaseCurveDiagramObject.cs",
+              "RelativeToolTip": "DiagramLibrary\\Classes\\BaseCurveDiagramObject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T20:57:24.166Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

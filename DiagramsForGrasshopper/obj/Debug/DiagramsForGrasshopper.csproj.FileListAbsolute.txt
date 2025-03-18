@@ -38,3 +38,16 @@ C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramsForGrasshopper\obj\Debug\Diagra
 C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.csproj.CopyComplete
 C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.dll
 C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.pdb
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.csproj.AssemblyReference.cache
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.Properties.Resources.resources
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.csproj.GenerateResource.cache
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.csproj.CoreCompileInputs.cache
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.dll
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\obj\Debug\DiagramsForGrasshopper.pdb
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\bin\DiagramsForGrasshopper.dll
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\bin\DiagramsForGrasshopper.pdb
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\bin\DiagramLibrary.dll
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\bin\Ed.Eto.dll
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\bin\DiagramLibrary.pdb
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\bin\Ed.Eto.xml
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramsForGrasshopper\obj\Debug\Diagrams.BD5C01EC.Up2Date

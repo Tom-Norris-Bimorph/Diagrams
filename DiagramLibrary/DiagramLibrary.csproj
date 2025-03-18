@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,9 +10,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DiagramLibrary</RootNamespace>
     <AssemblyName>DiagramLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +35,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ed.Eto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoCommon.8.17.25066.7001\lib\net48\Ed.Eto.dll</HintPath>
+    </Reference>
+    <Reference Include="Eto, Version=2.9.0.0, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoCommon.8.17.25066.7001\lib\net48\Eto.dll</HintPath>
+    </Reference>
+    <Reference Include="GH_IO, Version=8.17.25066.7001, Culture=neutral, PublicKeyToken=6a29997d2e6b4f97, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grasshopper.8.17.25066.7001\lib\net48\GH_IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Grasshopper, Version=8.17.25066.7001, Culture=neutral, PublicKeyToken=dda4f5ec2cd80803, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grasshopper.8.17.25066.7001\lib\net48\Grasshopper.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.UI, Version=8.17.25066.7001, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoCommon.8.17.25066.7001\lib\net48\Rhino.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="RhinoCommon, Version=8.17.25066.7001, Culture=neutral, PublicKeyToken=552281e97c755530, processorArchitecture=MSIL">
+      <HintPath>..\packages\RhinoCommon.8.17.25066.7001\lib\net48\RhinoCommon.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -39,48 +60,55 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="RhinoCommon">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Rhino 6\System\rhinocommon.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Grasshopper">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="GH_IO">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\BaseCurveDiagramObject.cs" />
-    <Compile Include="Classes\Diagram.cs" />
-    <Compile Include="Classes\DiagramCachedClass.cs" />
-    <Compile Include="Classes\DiagramColour.cs" />
-    <Compile Include="Classes\DiagramCurve.cs" />
-    <Compile Include="Classes\DiagramCurveEnd.cs" />
-    <Compile Include="Classes\DiagramDimention.cs" />
-    <Compile Include="Classes\DiagramCurveCollection.cs" />
-    <Compile Include="Classes\DiagramFilledRectangle.cs" />
-    <Compile Include="Classes\DiagramLabel.cs" />
-    <Compile Include="Classes\DiagramPieChart.cs" />
-    <Compile Include="Classes\DiagramPointLabel.cs" />
-    <Compile Include="Classes\DiagramTable.cs" />
-    <Compile Include="Classes\DiagramGoo.cs" />
-    <Compile Include="Classes\DiagramFilledCurve.cs" />
-    <Compile Include="Classes\DiagramImage.cs" />
-    <Compile Include="Classes\DiagramObject.cs" />
-    <Compile Include="Classes\DiagramText.cs" />
-    <Compile Include="Classes\NoDrawDiagramObject.cs" />
-    <Compile Include="Classes\DrawState.cs" />
-    <Compile Include="Classes\Report.cs" />
+    <Compile Include="Model\Core\Interfaces\DiagramObjects\IDiagramObjectSet.cs" />
+    <Compile Include="Model\Core\Interfaces\IDiagram.cs" />
+    <Compile Include="Model\Core\Interfaces\IDiagramAttributes.cs" />
+    <Compile Include="Model\Core\Interfaces\Frame\IDiagramFrame.cs" />
+    <Compile Include="Model\Core\Interfaces\DiagramInfo\IDiagramInfo.cs" />
+    <Compile Include="Model\Core\Interfaces\DiagramInfo\IDiagramTitle.cs" />
+    <Compile Include="Model\Core\Interfaces\IDiagramCoordinateSystem.cs" />
+    <Compile Include="Model\Core\Library\Attributes\DiagramAttributes.cs" />
+    <Compile Include="Model\Core\Library\Defaults\DiagramDefaults.cs" />
+    <Compile Include="Model\Core\Library\DiagramCoordinateSystem.cs" />
+    <Compile Include="Model\Core\Library\DiagramFrame\DiagramFrame.cs" />
+    <Compile Include="Model\Core\Library\DiagramInfo\DiagramInfo.cs" />
+    <Compile Include="Model\Core\Library\DiagramObjectConverter.cs" />
+    <Compile Include="Model\Core\Library\DigramObjects\DiagramObjectSet.cs" />
+    <Compile Include="Model\Core\Library\DiagramInfo\DiagramTitle.cs" />
+    <Compile Include="Model\Core\Library\IBaseCurveDiagramObject.cs" />
+    <Compile Include="Model\Core\Interfaces\DiagramObjects\IDiagramObjec.cs" />
+    <Compile Include="Model\Core\Interfaces\Reports\IReport.cs" />
+    <Compile Include="Model\Core\Interfaces\Reports\IReportItem.cs" />
+    <Compile Include="Model\Core\Library\Reports\ReportItem.cs" />
+    <Compile Include="Model\Core\Library\Diagram.cs" />
+    <Compile Include="Model\Core\Library\DiagramCachedClass.cs" />
+    <Compile Include="Model\Core\Library\DiagramColour.cs" />
+    <Compile Include="Model\Core\Library\DiagramCurve.cs" />
+    <Compile Include="Model\Core\Library\DiagramCurveEnd.cs" />
+    <Compile Include="Model\Core\Library\DiagramDimention.cs" />
+    <Compile Include="Model\Core\Library\DiagramCurveCollection.cs" />
+    <Compile Include="Model\Core\Library\DiagramFilledRectangle.cs" />
+    <Compile Include="Model\Core\Library\DiagramLabel.cs" />
+    <Compile Include="Model\Core\Library\DiagramPieChart.cs" />
+    <Compile Include="Model\Core\Library\DiagramPointLabel.cs" />
+    <Compile Include="Model\Core\Library\DiagramTable.cs" />
+    <Compile Include="Model\Core\Library\DiagramGoo.cs" />
+    <Compile Include="Model\Core\Library\DiagramFilledCurve.cs" />
+    <Compile Include="Model\Core\Library\DiagramImage.cs" />
+    <Compile Include="Model\Core\Library\DiagramObject.cs" />
+    <Compile Include="Model\Core\Library\DiagramText.cs" />
+    <Compile Include="Model\Core\Enums\DrawState.cs" />
+    <Compile Include="Model\Core\Library\Reports\Report.cs" />
     <Compile Include="DiagramLibraryComponent.cs" />
     <Compile Include="DiagramLibraryInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -102,4 +130,13 @@
     </StartArguments>
     <StartAction>Program</StartAction>
   </PropertyGroup>
+  <Import Project="..\packages\RhinoCommon.8.17.25066.7001\build\net48\RhinoCommon.targets" Condition="Exists('..\packages\RhinoCommon.8.17.25066.7001\build\net48\RhinoCommon.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\RhinoCommon.8.17.25066.7001\build\net48\RhinoCommon.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\RhinoCommon.8.17.25066.7001\build\net48\RhinoCommon.targets'))" />
+    <Error Condition="!Exists('..\packages\Grasshopper.8.17.25066.7001\build\net48\Grasshopper.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grasshopper.8.17.25066.7001\build\net48\Grasshopper.targets'))" />
+  </Target>
+  <Import Project="..\packages\Grasshopper.8.17.25066.7001\build\net48\Grasshopper.targets" Condition="Exists('..\packages\Grasshopper.8.17.25066.7001\build\net48\Grasshopper.targets')" />
 </Project>

@@ -22,3 +22,12 @@ C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary
 C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.csproj.CoreCompileInputs.cache
 C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.dll
 C:\Users\tomno\Desktop\Diagrams\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.pdb
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.csproj.AssemblyReference.cache
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.csproj.CoreCompileInputs.cache
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.dll
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\obj\Debug\DiagramLibrary.pdb
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\bin\DiagramLibrary.dll
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\bin\DiagramLibrary.pdb
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\bin\Ed.Eto.dll
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\bin\Ed.Eto.xml
+C:\Users\ThomasNorris\Documents\GitHub\Diagrams\DiagramLibrary\obj\Debug\DiagramL.BD092043.Up2Date
