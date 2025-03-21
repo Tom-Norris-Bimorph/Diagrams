@@ -21,7 +21,7 @@ namespace DiagramLibrary
         public int Width => this.Frame.Width;
         public int Height => this.Frame.Height;
 
-        public Diagram(IDiagramFrame frame, IDiagramTitle title, PointF location)
+        public Diagram(IDiagramFrame frame, IDiagramTitle title, IDiagramLocation location)
         {
             this.Objects = new DiagramObjectSet();
 
@@ -32,7 +32,7 @@ namespace DiagramLibrary
             this.CoordinateSystem = new DiagramCoordinateSystem(location);
         }
 
-        public Diagram() : this(100, 100, null, DiagramDefaults.DefaultColor, DiagramDefaults.DefaultLineWeight, DiagramDefaults.DefaultColor) { }
+        public Diagram() : this(DiagramDefaults.DefaultFrame, DiagramDefaults.DefaultTitle, new PointF(0, 0)) { }
 
         public Diagram Duplicate()
         {
@@ -53,42 +53,37 @@ namespace DiagramLibrary
 
         public Rectangle3d GetGeometryBoundingRectangle()
         {
-            var pl = Plane.WorldXY;
+            var plane = Plane.WorldXY;
 
-            if (this.Width <= 0 || this.Height <= 0)
+            if (this.Width > 0 && this.Height > 0)
+                return new Rectangle3d(plane, this.Width, this.Height);
+
+            var bb = BoundingBox.Unset;
+            foreach (var item in this.Objects)
             {
-                var bb = BoundingBox.Unset;
-                foreach (var item in this.Objects)
-                {
-                    bb.Union(item.GetBoundingBox());
-                }
-
-                double width = this.Width;
-                double height = this.Height;
-
-                if (this.Width <= 0)
-                {
-                    width = bb.Max.X - bb.Min.X;
-                }
-
-                if (height <= 0)
-                {
-                    height = bb.Max.Y - bb.Min.Y;
-                }
-
-                return new Rectangle3d(pl, width, height);
-
+                bb.Union(item.GetBoundingBox());
             }
-            else
+
+            double width = this.Width;
+            double height = this.Height;
+
+            if (this.Width <= 0)
             {
-                return new Rectangle3d(pl, this.Width, this.Height);
+                width = bb.Max.X - bb.Min.X;
             }
+
+            if (height <= 0)
+            {
+                height = bb.Max.Y - bb.Min.Y;
+            }
+
+            return new Rectangle3d(plane, width, height);
+
         }
 
         public BoundingBox GetGeometryBoundingBox()
         {
             return this.GetGeometryBoundingRectangle().ToNurbsCurve().GetBoundingBox(false);
-
         }
 
         public Size GetBoundingSize(float scale)
@@ -98,36 +93,33 @@ namespace DiagramLibrary
             return new Size((int)Math.Ceiling(bb.Width * scale), (int)Math.Ceiling(bb.Height * scale));
         }
 
-        private DiagramFilledRectangle GetBackground()
+        private DiagramHatchRectangle GetBackground()
         {
-
             var bbr = this.GetGeometryBoundingRectangle();
-            bbr.Transform(Transform.Translation(this.CoordinateSystem.Location.X, this.CoordinateSystem.Location.Y, 0));
+            bbr.Transform(Transform.Translation(this.CoordinateSystem.Location.Point.X, this.CoordinateSystem.Location.Point.Y, 0));
 
-            return DiagramFilledRectangle.Create(bbr, this.Frame.BackgroundColour, this.Frame.FrameColour, this.Frame.FrameLineWeight);
+            return DiagramHatchRectangle.Create(bbr, this.Frame.BackgroundColour, this.Frame.FrameColour, this.Frame.FrameLineWeight);
 
         }
 
-        public Bitmap DrawBitmap(float scale) // be careful all the Y dimentions need to be be subtracted from the the hieght at this is drawn upside down
+        /// <summary>
+        /// be careful all the Y dimentions need to be be subtracted from the the hieght at this is drawn upside down
+        /// </summary>
+        /// <param name="scale"></param>
+        /// <returns></returns>
+        public Bitmap DrawBitmap(float scale)
         {
-            //TODO DrawBitmap needs to pass on the scale and draw accordingly
             var size = this.GetBoundingSize(scale);
 
-            if (size.Width < 1)
-            {
-                size.Width = 1;
-            }
+            if (size.Width < 1) size.Width = 1;
 
-            if (size.Height < 1)
-            {
-                size.Height = 1;
-            }
+            if (size.Height < 1) size.Height = 1;
 
-            var btm = new Bitmap(size.Width, size.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            var bitmap = new Bitmap(size.Width, size.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
-            using (var graphics = Graphics.FromImage(btm))
+            using (var graphics = Graphics.FromImage(bitmap))
             {
-                graphics.TranslateTransform(-this.CoordinateSystem.Location.X, -this.CoordinateSystem.Location.Y, System.Drawing.Drawing2D.MatrixOrder.Append);
+                graphics.TranslateTransform(-this.CoordinateSystem.Location.Point.X, -this.CoordinateSystem.Location.Point.Y, System.Drawing.Drawing2D.MatrixOrder.Append);
                 graphics.ScaleTransform(scale, scale);
                 graphics.FillRectangle(Brushes.White, new RectangleF(0, 0, this.Width, this.Height));// text displays badly without this, if no background is set
                 this.GetBackground().DrawBitmap(graphics);
@@ -142,42 +134,42 @@ namespace DiagramLibrary
                     }
                     catch (Exception ex)
                     {
-
                         // component.AddRuntimeMessage(Grasshopper.Kernel.GH_RuntimeMessageLevel.Warning, "GH Canvas: An Object was Skipped When Drawing: " + ex.Message);
                     }
                 }
             }
 
-            btm.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            bitmap.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
-            return btm;
-
+            return bitmap;
         }
 
-        public Report DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
+        public Report DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform transform, DrawState state)
         {
             var report = new Report();
 
-            if (this.CoordinateSystem.Location != PointF.Empty)
+            var locationPoint = this.CoordinateSystem.Location.Point;
+
+            if (locationPoint != PointF.Empty)
             {
-
-                xform = Transform.Multiply(xform, Transform.Translation(new Vector3d(-this.CoordinateSystem.Location.X, -this.CoordinateSystem.Location.Y, 0)));
-
+                transform = Transform.Multiply(transform, Transform.Translation(new Vector3d(-locationPoint.X, -locationPoint.Y, 0)));
             }
 
-            this.GetBackground().DrawRhinoPreview(pipeline, tolerance, xform, state);
+            var background = this.GetBackground();
+
+            background.DrawRhinoPreview(pipeline, tolerance, transform, state);
 
             if (this.Info.Title != null)
             {
                 var pt = new PointF(0, this.Height);
-                var title = this.Info.Title;
-                title.Location = pt;
-                if (title.TextSize < 0)
+                var title = this.Info.Title.TitleText;
+                title.Location.Point = pt;
+                if (title.TextAttributes.TextSize < 0)
                 {
-                    title.TextSize = this.Width / 20;
+                    title.TextAttributes.TextSize = this.Width / 20;
                 }
 
-                title.DrawRhinoPreview(pipeline, tolerance, xform, state);
+                title.DrawRhinoPreview(pipeline, tolerance, transform, state);
             }
 
             foreach (var diagramObject in this.Objects)
@@ -185,7 +177,7 @@ namespace DiagramLibrary
                 if (diagramObject is IDrawableDiagramObject drawableDiagramObject == false) continue;
                 try
                 {
-                    drawableDiagramObject.DrawRhinoPreview(pipeline, tolerance, xform, state);
+                    drawableDiagramObject.DrawRhinoPreview(pipeline, tolerance, transform, state);
                 }
                 catch (Exception ex)
                 {
@@ -198,32 +190,33 @@ namespace DiagramLibrary
 
         }
 
-        public Report BakeRhinoPreview(double tolerance, Transform xform, DrawState state
+        public Report BakeRhinoPreview(double tolerance, Transform transform, DrawState state
             , Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr, out List<Guid> guids)
         {
             guids = new List<Guid>();
             var report = new Report();
 
-            if (this.CoordinateSystem.Location != PointF.Empty)
+            var locationPoint = this.CoordinateSystem.Location.Point;
+
+            if (locationPoint != PointF.Empty)
             {
-
-                xform = Transform.Multiply(xform, Transform.Translation(new Vector3d(-this.CoordinateSystem.Location.X, -this.CoordinateSystem.Location.Y, 0)));
-
+                transform = Transform.Multiply(transform, Transform.Translation(new Vector3d(-locationPoint.X, -locationPoint.Y, 0)));
             }
 
-            guids.AddRange(this.GetBackground().BakeRhinoPreview(tolerance, xform, state, doc, attr));
+            var background = this.GetBackground();
+            guids.AddRange(background.BakeRhinoPreview(tolerance, transform, state, doc, attr));
 
-            if (this.Info.Title.Title != null)
+            if (this.Info.Title.TitleText != null)
             {
-                var pt = new PointF(0, this.Height);
-                var title = this.Info.Title.Title;
-                title.Location = pt;
+                var titlePoint = new PointF(0, this.Height);
+                var title = this.Info.Title.TitleText;
+                title.Location = titlePoint;
                 if (title.TextSize < 0)
                 {
                     title.TextSize = this.Width / 20;
                 }
 
-                guids.AddRange(title.BakeRhinoPreview(tolerance, xform, state, doc, attr));
+                guids.AddRange(title.BakeRhinoPreview(tolerance, transform, state, doc, attr));
             }
 
             foreach (var diagramObject in this.Objects)
@@ -231,7 +224,7 @@ namespace DiagramLibrary
                 if (diagramObject is IDrawableDiagramObject drawableDiagramObject == false) continue;
                 try
                 {
-                    guids.AddRange(drawableDiagramObject.BakeRhinoPreview(tolerance, xform, state, doc, attr));
+                    guids.AddRange(drawableDiagramObject.BakeRhinoPreview(tolerance, transform, state, doc, attr));
                 }
                 catch (Exception ex)
                 {

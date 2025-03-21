@@ -1,11 +1,5 @@
-﻿using Grasshopper.Kernel.Data;
-using Grasshopper.Kernel.Types;
-using Rhino.Geometry;
-using System.Collections.Generic;
-using System.Drawing;
-
-namespace DiagramLibrary
-{
+﻿namespace DiagramLibrary
+{/*
     public class DiagramTable : DiagramCachedClass
     {
         GH_Structure<GH_String> m_Data = new GH_Structure<GH_String>();
@@ -231,4 +225,5 @@ namespace DiagramLibrary
             return diagramObjects;
         }
     }
-}
+}*/
+

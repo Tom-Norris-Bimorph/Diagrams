@@ -1,25 +1,19 @@
-﻿using DiagramLibrary.Core;
-using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-
-namespace DiagramLibrary
-{
+﻿namespace DiagramLibrary
+{/*
     public class DiagramCurveCollection : IBaseCurveDiagramObject
     {
 
         private readonly List<DiagramCurve> _curves = new List<DiagramCurve>();
 
-        public IDiagramAttributes Attributes { get; }
+        public IDiagramCurveAttributes CurveAttributes { get; }
 
-        public DiagramCurveCollection(List<Curve> curves, IDiagramAttributes attributes)
+        public DiagramCurveCollection(List<Curve> curves, IDiagramCurveAttributes curveAttributes)
         {
-            this.Attributes = attributes;
+            this.CurveAttributes = curveAttributes;
 
             foreach (var curve in curves)
             {
-                var diagramCurve = new DiagramCurve(curve, attributes);
+                var diagramCurve = new DiagramCurve(curve, curveAttributes);
 
                 _curves.Add(diagramCurve);
             }
@@ -29,7 +23,6 @@ namespace DiagramLibrary
         {
             throw new NotImplementedException();
         }
-
 
         IBaseCurveDiagramObject IBaseCurveDiagramObject.SetLocationAndDirectionForDrawing(Point3d basePoint,
             Vector3d baseDirection, Point3d location, Vector3d rotation)
@@ -113,16 +106,16 @@ namespace DiagramLibrary
 
         }
 
-        public override List<Guid> BakeRhinoPreview(double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        public override List<Guid> BakeRhinoPreview(double tolerance, Transform transform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
         {
             var outList = new List<Guid>();
             foreach (var crv in _curves)
             {
 
-                outList.AddRange(crv.BakeRhinoPreview(tolerance, xform, state, doc, attr));
+                outList.AddRange(crv.BakeRhinoPreview(tolerance, transform, state, doc, attr));
             }
             return outList;
 
         }
     }
-}
+}*/

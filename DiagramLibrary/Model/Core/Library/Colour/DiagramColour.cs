@@ -18,19 +18,21 @@ namespace DiagramLibrary
             var q = Convert.ToInt32(value * (1 - hueFractional * saturation));
             var t = Convert.ToInt32(value * (1 - (1 - hueFractional) * saturation));
 
-            if (hueInterval == 0)
-                return Color.FromArgb(255, valueInt, t, p);
-            else if (hueInterval == 1)
-                return Color.FromArgb(255, q, valueInt, p);
-            else if (hueInterval == 2)
-                return Color.FromArgb(255, p, valueInt, t);
-            else if (hueInterval == 3)
-                return Color.FromArgb(255, p, q, valueInt);
-            else if (hueInterval == 4)
-                return Color.FromArgb(255, t, p, valueInt);
-            else
-                return Color.FromArgb(255, valueInt, p, q);
-
+            switch (hueInterval)
+            {
+                case 0:
+                    return Color.FromArgb(255, valueInt, t, p);
+                case 1:
+                    return Color.FromArgb(255, q, valueInt, p);
+                case 2:
+                    return Color.FromArgb(255, p, valueInt, t);
+                case 3:
+                    return Color.FromArgb(255, p, q, valueInt);
+                case 4:
+                    return Color.FromArgb(255, t, p, valueInt);
+                default:
+                    return Color.FromArgb(255, valueInt, p, q);
+            }
         }
 
         public static List<Color> GetColors(int count)
@@ -53,7 +55,6 @@ namespace DiagramLibrary
 
         public static List<Color> GetColors(int count, Color startingColour)
         {
-
             var clrs = new List<Color>();
             for (var i = 0; i < count; i++)
             {
@@ -61,7 +62,6 @@ namespace DiagramLibrary
                 clrs.Add(startingColour);
             }
             return clrs;
-
         }
     }
 }

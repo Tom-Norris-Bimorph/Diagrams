@@ -1,10 +1,6 @@
-﻿using Rhino.Geometry;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-
-namespace DiagramLibrary
+﻿namespace DiagramLibrary
 {
+} /*
     public class DiagramPieChart : DiagramCachedClass
     {
         List<double> m_Data = new List<double>();
@@ -23,10 +19,6 @@ namespace DiagramLibrary
         float m_Padding;
         DiagramCurveEnd m_CurveEnd;
         PointF m_Location;
-
-
-
-
 
         public static DiagramPieChart Create(List<double> Data, List<string> DataLabels, List<Color> DataFillColors, List<Color> DataLineColors, PointF Location,
         float OuterRadius, float InnerRadius, float LabelRadius, float LineWieght, float TextSize, Color textColor, Color maskColor, Color frameColor, float frameLineWieght,
@@ -77,7 +69,6 @@ namespace DiagramLibrary
 
             chart.m_Location = Location;
 
-
             chart.m_OuterRadius = OuterRadius;
             chart.m_InnerRadius = InnerRadius;
             chart.m_LabelRadius = LabelRadius;
@@ -95,8 +86,6 @@ namespace DiagramLibrary
             return chart;
 
         }
-
-
 
         public static DiagramPieChart Create(List<double> Data, List<string> DataLabels)
         {
@@ -205,7 +194,7 @@ namespace DiagramLibrary
                 var joinedCurves = Curve.JoinCurves(curves);
                 foreach (var joinedCurve in joinedCurves)
                 {
-                    diagramObjects.Add(DiagramFilledCurve.Create(joinedCurve, m_DataFillColors[i], m_DataLineColors[i], _lineWeight));
+                    diagramObjects.Add(DiagramHatch.Create(joinedCurve, m_DataFillColors[i], m_DataLineColors[i], _lineWeight));
                 }
 
                 if (m_DataLabels[i] == string.Empty) { continue; }
@@ -221,3 +210,4 @@ namespace DiagramLibrary
         }
     }
 }
+*/

@@ -8,9 +8,9 @@ namespace DiagramLibrary
 
         public IDiagramTitle Title { get; }
 
-        public DiagramInfo(IDiagramTitle title)
+        public DiagramInfo(IDiagramTitle titleText)
         {
-            this.Title = title;
+            this.Title = titleText;
         }
     }
 }

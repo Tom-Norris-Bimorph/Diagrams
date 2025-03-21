@@ -1,4 +1,5 @@
 ﻿using DiagramLibrary.Core;
+using DiagramLibrary.Text;
 using Rhino.Display;
 using Rhino.Geometry;
 using System;
@@ -7,95 +8,110 @@ using System.Drawing;
 
 namespace DiagramLibrary
 {
-    public class DiagramLabel : IDrawableDiagramObject
+
+    public class DiagramLabel : IDiagramLabel
     {
+        public IDiagramCurveAttributes CurveAttributes { get; }
+        public IDiagramLocation Location { get; }
+        public IDiagramLabelLeader Leader { get; }
+        public IDiagramText DiagramText { get; }
 
-        private PointF m_LeaderLocation;
-        private float m_Offset;
-        private DiagramCurve m_leader;
-
-        public DiagramText DiagramText { get; }
-
-        public static DiagramLabel Create(string text, PointF leaderLocation, float offset, Vector3d direction, Color colour, float lineWeight, float textSize,
-          Color maskColour, Color frameColor, float frameLineWeight,
-          string fontName, float padding, DiagramCurveEnd crvEnd)
+        public DiagramLabel(IDiagramText diagramText, IDiagramLabelLeader leader = null)
         {
-
-            var diagramLabel = new DiagramLabel();
-
-            var line = new Line(Diagram.ConvertPoint(leaderLocation), direction, offset);
-            var directionUnitized = direction;
-            directionUnitized.Unitize();
-            var justification = Rhino.Geometry.TextJustification.None;
-            var underlineDirection = new Vector3d(1, 0, 0);
-
-            if (directionUnitized.X == 0)
-            {
-                justification = TextJustification.BottomCenter;
-            }
-
-            if (directionUnitized.X < 0)
-            {
-                justification = TextJustification.BottomRight;
-                underlineDirection = new Vector3d(-1, 0, 0);
-            }
-
-            if (directionUnitized.X > 0)
-            {
-                justification = TextJustification.BottomLeft;
-            }
-
-            diagramLabel.m_DiagramText = DiagramText.Create(text, Diagram.ConvertPoint(line.To), colour, textSize, justification, maskColour, frameColor, frameLineWeight, fontName, new SizeF(-1, -1), padding, Rhino.Geometry.TextJustification.BottomLeft);
-            var line2 = new Line(line.To, underlineDirection, diagramLabel.m_DiagramText.GetTotalSize().Width);
-            diagramLabel.m_leader = DiagramCurve.Create(new Polyline(new Point3d[] { line.From, line.To, line2.To }).ToNurbsCurve(), colour, lineWeight);
-
-            if (crvEnd != null)
-            {
-                diagramLabel.m_leader.AddCurveEnds(crvEnd, null);
-            }
-            diagramLabel.m_LeaderLocation = leaderLocation;
-            diagramLabel.m_Offset = offset;
-
-            return diagramLabel;
+            this.DiagramText = diagramText;
+            this.Leader = leader;
         }
 
-        public override DiagramObject Duplicate()
+        /* public DiagramLabel(string text, PointF leaderLocation, float offset, Vector3d direction, Color colour, float lineWeight, float textSize,
+           Color maskColour, Color frameColor, float frameLineWeight,
+           string fontName, float padding, DiagramCurveEnd crvEnd)
+         {
+
+             var diagramLabel = new DiagramLabel();
+
+             var line = new Line(Diagram.ConvertPoint(leaderLocation), direction, offset);
+             var directionUnitized = direction;
+             directionUnitized.Unitize();
+             var justification = Rhino.Geometry.TextJustification.None;
+             var underlineDirection = new Vector3d(1, 0, 0);
+
+             if (directionUnitized.X == 0)
+             {
+                 justification = TextJustification.BottomCenter;
+             }
+
+             if (directionUnitized.X < 0)
+             {
+                 justification = TextJustification.BottomRight;
+                 underlineDirection = new Vector3d(-1, 0, 0);
+             }
+
+             if (directionUnitized.X > 0)
+             {
+                 justification = TextJustification.BottomLeft;
+             }
+
+             diagramLabel.this.DiagramText = this.DiagramText.Create(text, Diagram.ConvertPoint(line.To), colour, textSize, justification, maskColour, frameColor, frameLineWeight, fontName, new SizeF(-1, -1), padding, Rhino.Geometry.TextJustification.BottomLeft);
+             var line2 = new Line(line.To, underlineDirection, diagramLabel.this.DiagramText.GetTotalSize().Width);
+             diagramLabel.Leader = DiagramCurve.Create(new Polyline(new Point3d[] { line.From, line.To, line2.To }).ToNurbsCurve(), colour, lineWeight);
+
+             if (crvEnd != null)
+             {
+                 diagramLabel.Leader.AddCurveEnds(crvEnd, null);
+             }
+             diagramLabel.LeaderLocation = leaderLocation;
+             diagramLabel.Offset = offset;
+
+             return diagramLabel;
+         }*/
+
+        public IDiagramObject Duplicate()
         {
-            var diagramLabel = new DiagramLabel();
-            diagramLabel.m_DiagramText = m_DiagramText.Duplicate() as DiagramText;
-            diagramLabel.m_LeaderLocation = m_LeaderLocation;
-            diagramLabel.m_Offset = m_Offset;
-            diagramLabel.m_leader = m_leader;
-            return diagramLabel;
+            var textCopy = this.DiagramText.Duplicate() as DiagramText;
+            var leaderCopy = this.Leader.Duplicate() as DiagramLabelLeader;
+
+            return new DiagramLabel(textCopy, leaderCopy);
         }
 
-        public override BoundingBox GetBoundingBox()
+        public PointF GetBoundingBoxLocation()
         {
-            var bb = new BoundingBox(new Point3d[] { Diagram.ConvertPoint(m_LeaderLocation) });
-            bb.Union(m_DiagramText.GetBoundingBox());
-
-            return bb;
+            var boundingBox = this.GetBoundingBox();
+            return DiagramCoordinateSystem.ConvertPoint(boundingBox.Min);
         }
 
-        public override void DrawBitmap(Graphics g)
+        public SizeF GetTotalSize()
         {
-            m_leader.DrawBitmap(g);
-            m_DiagramText.DrawBitmap(g);
+            var boundingBox = this.GetBoundingBox();
+            return new SizeF((float)(boundingBox.Max.X - boundingBox.Min.X), (float)(boundingBox.Max.Y - boundingBox.Min.Y));
         }
 
-        public override void DrawRhinoPreview(DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
+        public BoundingBox GetBoundingBox()
         {
-            m_leader.DrawRhinoPreview(pipeline, tolerance, xform, state);
-            m_DiagramText.DrawRhinoPreview(pipeline, tolerance, xform, state);
+            var boundingBox = new BoundingBox(new Point3d[] { DiagramCoordinateSystem.ConvertPoint(this.Leader.LeaderLocation) });
+            boundingBox.Union(this.DiagramText.GetBoundingBox());
+
+            return boundingBox;
+        }
+
+        public void DrawBitmap(Graphics g)
+        {
+            this.Leader.LeaderCurve.DrawBitmap(g);
+            this.DiagramText.DrawBitmap(g);
+        }
+
+        public void DrawRhinoPreview(DisplayPipeline pipeline, double tolerance, Transform xform, DrawState state)
+        {
+            this.Leader.LeaderCurve.DrawRhinoPreview(pipeline, tolerance, xform, state);
+            this.DiagramText.DrawRhinoPreview(pipeline, tolerance, xform, state);
 
             return;
         }
 
-        public override List<Guid> BakeRhinoPreview(double tolerance, Transform xform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
+        public List<Guid> BakeRhinoPreview(double tolerance, Transform transform, DrawState state, Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr)
         {
             var outList = new List<Guid>();
-            outList.AddRange(m_leader.BakeRhinoPreview(tolerance, xform, state, doc, attr));
-            outList.AddRange(m_DiagramText.BakeRhinoPreview(tolerance, xform, state, doc, attr));
+            outList.AddRange(this.Leader.LeaderCurve.BakeRhinoPreview(tolerance, transform, state, doc, attr));
+            outList.AddRange(this.DiagramText.BakeRhinoPreview(tolerance, transform, state, doc, attr));
 
             return outList;
         }

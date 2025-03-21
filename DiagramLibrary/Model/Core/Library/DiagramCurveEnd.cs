@@ -6,52 +6,49 @@ using System.Drawing;
 
 namespace DiagramLibrary
 {
-    public class DiagramCurveEnd : IDrawableDiagramObject
+
+    public class DiagramCurveEnd : IDiagramCurveEnd
     {
 
-        IBaseCurveDiagramObject m_Object = null;
+        public IBaseCurveDiagramObject Object { get; }
 
-        private Point3d m_BasePoint = Point3d.Unset;
-        private Vector3d m_BaseDirection = Vector3d.Unset;
-        private bool m_Flipped = false;
+        public Point3d BasePoint { get; }
+        public Vector3d BaseDirection { get; }
+        public bool Flipped { get; private set; }
 
-        public DiagramCurveEnd DuplicateCurveEnd()
+        public DiagramCurveEnd(IBaseCurveDiagramObject diagramObject, Point3d location, Vector3d rotation, bool flipped)
         {
+            this.Object = diagramObject.Duplicate();
+            this.BasePoint = location;
+            this.BaseDirection = rotation;
+            this.Flipped = flipped;
+        }
 
+        public IDiagramCurveEnd DuplicateCurveEnd()
+        {
             return this.Duplicate() as DiagramCurveEnd;
         }
 
         public IDiagramObject Duplicate()
         {
-            return new DiagramCurveEnd(m_Object.Duplicate() as BaseCurveDiagramObject, m_BasePoint, m_BaseDirection, m_Flipped);
-        }
-
-        public DiagramCurveEnd(IBaseCurveDiagramObject diagramObject, Point3d location, Vector3d rotation, bool flipped)
-
-        {
-            m_Object = diagramObject.Duplicate() as BaseCurveDiagramObject;
-
-            m_BasePoint = location;
-            m_BaseDirection = rotation;
-            m_Flipped = flipped;
-
+            return new DiagramCurveEnd(this.Object, this.BasePoint, this.BaseDirection, this.Flipped);
         }
 
         public void Flip()
         {
-            m_Flipped = !m_Flipped;
+            this.Flipped = !this.Flipped;
         }
 
         public void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance, Transform transform, DrawState state, Point3d location, Vector3d rotation)
         {
 
-            var flipCorrectedDirection = m_BaseDirection;
-            if (m_Flipped)
+            var flipCorrectedDirection = this.BaseDirection;
+            if (this.Flipped)
             {
                 flipCorrectedDirection.Reverse();
             }
 
-            var positionedObject = m_Object.SetLocationAndDirectionForDrawing(m_BasePoint, flipCorrectedDirection, location, rotation);
+            var positionedObject = this.Object.SetLocationAndDirectionForDrawing(this.BasePoint, flipCorrectedDirection, location, rotation);
             if (positionedObject != null)
             {
                 positionedObject.DrawRhinoPreview(pipeline, tolerance, transform, state);
@@ -62,13 +59,13 @@ namespace DiagramLibrary
         {
             var outList = new List<Guid>();
 
-            var flipCorrectedDirection = m_BaseDirection;
-            if (m_Flipped)
+            var flipCorrectedDirection = this.BaseDirection;
+            if (this.Flipped)
             {
                 flipCorrectedDirection.Reverse();
             }
 
-            var positionedObject = m_Object.SetLocationAndDirectionForDrawing(m_BasePoint, flipCorrectedDirection, location, rotation);
+            var positionedObject = this.Object.SetLocationAndDirectionForDrawing(this.BasePoint, flipCorrectedDirection, location, rotation);
             if (positionedObject != null)
             {
                 outList.AddRange(positionedObject.BakeRhinoPreview(tolerance, transform, state, doc, attr));
@@ -78,27 +75,11 @@ namespace DiagramLibrary
 
         public void DrawBitmap(Graphics g, Point3d location, Vector3d rotation)
         {
-            var positionedObject = m_Object.SetLocationAndDirectionForDrawing(m_BasePoint, m_BaseDirection, location, rotation);
+            var positionedObject = this.Object.SetLocationAndDirectionForDrawing(this.BasePoint, this.BaseDirection, location, rotation);
             if (positionedObject != null)
             {
                 positionedObject.DrawBitmap(g);
             }
-        }
-
-        public static DiagramCurveEnd DefaultDimentionCurveEnd(double scale, Color color, float lineWieght)
-        {
-
-            var crvs = new List<Curve>();
-            crvs.Add(new Line(Point3d.Origin, Vector3d.YAxis, 10 * scale).ToNurbsCurve());
-            crvs.Add(new Line(Point3d.Origin, Vector3d.XAxis, 5 * scale).ToNurbsCurve());
-            crvs.Add(new Line(Point3d.Origin, Vector3d.XAxis, -5 * scale).ToNurbsCurve());
-            crvs.Add(new Line(Point3d.Origin, new Vector3d(1, 1, 0), 5 * scale).ToNurbsCurve());
-            crvs.Add(new Line(Point3d.Origin, new Vector3d(1, 1, 0), -5 * scale).ToNurbsCurve());
-
-            var crvCollection = DiagramCurveCollection.Create(crvs, color, lineWieght);
-            var curveEnd = new DiagramCurveEnd(crvCollection, Point3d.Origin, Vector3d.YAxis, false);
-            return curveEnd;
-
         }
     }
 }

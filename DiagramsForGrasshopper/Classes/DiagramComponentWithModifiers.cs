@@ -1,10 +1,6 @@
-﻿using DiagramLibrary;
-using GH_IO.Serialization;
+﻿using GH_IO.Serialization;
 using Grasshopper.Kernel;
-using Rhino.Geometry;
-using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace DiagramsForGrasshopper
 {
@@ -15,24 +11,19 @@ namespace DiagramsForGrasshopper
         public List<int> Seperators = new List<int>();
 
         public List<ModifiersBase> Modifiers = new List<ModifiersBase>();
-       
-       
 
         public DiagramComponentWithModifiers(string a, string b, string c, string d, string e)
            : base(a, b, c, d, e) // pass through the GH_Comp
         {
         }
 
-
         protected override void RegisterInputParams(GH_InputParamManager pManager)
         {
-            RegisterInputStartingParams(pManager);
+            this.RegisterInputStartingParams(pManager);
             Seperators.Add(pManager.ParamCount);
-
         }
 
         protected abstract void RegisterInputStartingParams(GH_InputParamManager pManager);
-
 
         public override void CreateAttributes()
         {
@@ -40,7 +31,6 @@ namespace DiagramsForGrasshopper
             m_attributes = new ModifiersAttributes(this);
 
         }
-
 
         public bool CanInsertParameter(GH_ParameterSide side, int index)
         {
@@ -57,8 +47,6 @@ namespace DiagramsForGrasshopper
             return null;
         }
 
-
-
         public bool DestroyParameter(GH_ParameterSide side, int index)
         {
             return false;
@@ -66,7 +54,7 @@ namespace DiagramsForGrasshopper
 
         public void VariableParameterMaintenance()
         {
-            
+
         }
 
         /// <summary>
@@ -74,11 +62,11 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public override bool Write(GH_IWriter writer)
         {
-            for (int i = 0; i < Modifiers.Count; i++)
+            for (var i = 0; i < Modifiers.Count; i++)
             {
                 writer.SetBoolean("Modifier" + i.ToString() + "HasBeenAdded", Modifiers[i].HasBeenAdded);
             }
-           
+
             return base.Write(writer);
         }
         /// <summary>
@@ -86,41 +74,33 @@ namespace DiagramsForGrasshopper
         /// </summary>
         public override bool Read(GH_IReader reader)
         {
-           
 
-            for (int i = 0; i < Modifiers.Count; i++)
+            for (var i = 0; i < Modifiers.Count; i++)
             {
-              
+
                 if (reader.ItemExists("Modifier" + i.ToString() + "HasBeenAdded"))
                 {
                     Modifiers[i].HasBeenAdded = reader.GetBoolean("Modifier" + i.ToString() + "HasBeenAdded");
-                   
+
                 }
-
             }
-
-
 
             return base.Read(reader);
         }
 
-
-
         public void GetAllValues(IGH_DataAccess DA)
         {
 
-            for (int i = 0; i < Modifiers.Count; i++)
+            for (var i = 0; i < Modifiers.Count; i++)
             {
-                Modifiers[i].GetValues(DA,this);
+                Modifiers[i].GetValues(DA, this);
             }
-
         }
 
-
-        public  TextModifiers GetFirstOrDefaultTextModifier()
+        public TextModifiers GetFirstOrDefaultTextModifier()
         {
 
-            for (int i = 0; i < Modifiers.Count; i++)
+            for (var i = 0; i < Modifiers.Count; i++)
             {
                 if (Modifiers[i].GetType() == typeof(TextModifiers))
                 {
@@ -130,11 +110,10 @@ namespace DiagramsForGrasshopper
             return new TextModifiers(false, false, false, false, false, false, false, false);
         }
 
-
-        public  CurveModifiers GetFirstOrDefaultCurveModifier()
+        public CurveModifiers GetFirstOrDefaultCurveModifier()
         {
 
-            for (int i = 0; i < Modifiers.Count; i++)
+            for (var i = 0; i < Modifiers.Count; i++)
             {
                 if (Modifiers[i].GetType() == typeof(CurveModifiers))
                 {
@@ -143,10 +122,5 @@ namespace DiagramsForGrasshopper
             }
             return new CurveModifiers(false, false, false, false);
         }
-
-
-
-
     }
-
 }

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using DiagramLibrary;
+﻿using DiagramLibrary;
+using DiagramLibrary.Defaults;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
-using System.Linq;
+using System;
+using System.Drawing;
 
 namespace DiagramsForGrasshopper
 {
@@ -27,13 +26,11 @@ namespace DiagramsForGrasshopper
         protected override void RegisterInputStartingParams(GH_Component.GH_InputParamManager pManager)
         {
             pManager.AddBrepParameter("Brep", "Brep", "Height in Pixels", GH_ParamAccess.item);
-   
-            pManager.AddColourParameter("FillColour", "FClr", "Height in Pixels", GH_ParamAccess.item, Diagram.DefaultColor);
-       
-        
+
+            pManager.AddColourParameter("FillColour", "FClr", "Height in Pixels", GH_ParamAccess.item, DiagramDefaults.DefaultColor);
+
         }
 
-     
         /// <summary>
         /// This is the method that actually does the work.
         /// </summary>
@@ -41,50 +38,57 @@ namespace DiagramsForGrasshopper
         public override Diagram DiagramSolveInstance(IGH_DataAccess DA)
         {
             this.GetAllValues(DA);
-            Color clr = Diagram.DefaultColor;
-          Brep brep = null;
-      
+            var color = DiagramDefaults.DefaultColor;
+            Brep brep = null;
 
             DA.GetData(0, ref brep);
-            DA.GetData(1, ref clr);
-         
+            DA.GetData(1, ref color);
 
-
-            if (brep == null) {
-                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Brep cannot be Null");
+            if (brep == null)
+            {
+                this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Brep cannot be Null");
                 return null;
             }
 
-            CurveModifiers curveModifiers = this.GetFirstOrDefaultCurveModifier();
+            var curveModifiers = this.GetFirstOrDefaultCurveModifier();
 
-            List<DiagramFilledCurve> diagramCurves = DiagramFilledCurve.CreateFromBrep(brep, clr, curveModifiers.LineColors, (float)curveModifiers.LineWeight);
+            var attributes = new DiagramCurveAttributes(curveModifiers.LineColors,
+                (float)curveModifiers.LineWeight);
 
+            var hatchAttributes = new DiagramHatchAttributes(color);
 
+            var diagramCurves = DiagramHatch.CreateFromBrep(brep, attributes, hatchAttributes);
 
-            if (diagramCurves == null || diagramCurves.Count == 0) {
+            if (diagramCurves == null || diagramCurves.Count == 0)
+            {
                 return null;
             }
-            BoundingBox bb = BoundingBox.Empty;
+            var bb = BoundingBox.Empty;
 
-            BoundingBox locationBB = BoundingBox.Empty;
-            for (int i = 0; i < diagramCurves.Count; i++)
+            var boundingBox = BoundingBox.Empty;
+            foreach (var curve in diagramCurves)
             {
-                bb.Union(diagramCurves[i].GetBoundingBox());
+                bb.Union(curve.GetBoundingBox());
 
-                locationBB.Union(Diagram.ConvertPoint(diagramCurves[i].GetBoundingBoxLocation()));
-               
+                boundingBox.Union(DiagramCoordinateSystem.ConvertPoint(curve.GetBoundingBoxLocation()));
             }
 
-            SizeF maxSize = new SizeF((float)(bb.Max.X - bb.Min.X), (float)(bb.Max.Y - bb.Min.Y));
+            var maxSize = new SizeF((float)(bb.Max.X - bb.Min.X), (float)(bb.Max.Y - bb.Min.Y));
 
-            Diagram diagram = Diagram.Create((int)Math.Ceiling(maxSize.Width), (int)Math.Ceiling(maxSize.Height), null, Color.Transparent, 0, Color.Transparent, Diagram.ConvertPoint(locationBB.Min));
+            var frame = new DiagramFrame((int)Math.Ceiling(maxSize.Width), (int)Math.Ceiling(maxSize.Height), Color.Transparent, 0, Color.Transparent);
 
-            for (int i = 0; i < diagramCurves.Count; i++)
+            var title = DiagramDefaults.DefaultTitle;
+
+            var location = new DiagramLocation(boundingBox.Min);
+
+            var diagram = new Diagram(frame, title, location);
+
+            foreach (var diagramHatch in diagramCurves)
             {
-                diagram.AddDiagramObject(diagramCurves[i]);
+                diagram.Objects.Add(diagramHatch);
             }
 
-           return diagram;
+            return diagram;
         }
 
         /// <summary>

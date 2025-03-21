@@ -11,8 +11,12 @@ namespace DiagramLibrary.Core
     /// </summary>
     public interface IDiagramObject
     {
-        IDiagramAttributes Attributes { get; }
+        IDiagramLocation Location { get; }
+
         SizeF GetTotalSize();
+        PointF GetBoundingBoxLocation();
+
+        BoundingBox GetBoundingBox();
 
         IDiagramObject Duplicate();
     }
@@ -20,15 +24,14 @@ namespace DiagramLibrary.Core
     public interface IDrawableDiagramObject : IDiagramObject
     {
 
-        PointF GetBoundingBoxLocation();
+        IDiagramCurveAttributes CurveAttributes { get; }
 
-        BoundingBox GetBoundingBox();
         void DrawBitmap(Graphics g);
 
         void DrawRhinoPreview(Rhino.Display.DisplayPipeline pipeline, double tolerance,
             Transform xform, DrawState state);
 
-        List<Guid> BakeRhinoPreview(double tolerance, Transform xform, DrawState state,
+        List<Guid> BakeRhinoPreview(double tolerance, Transform transform, DrawState state,
             Rhino.RhinoDoc doc, Rhino.DocObjects.ObjectAttributes attr);
 
     }

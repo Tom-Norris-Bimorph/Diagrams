@@ -1,9 +1,10 @@
-﻿namespace DiagramLibrary.Core
+﻿using DiagramLibrary.Text;
+
+namespace DiagramLibrary.Core
 {
 
     public interface IDiagramTitle
     {
-        string TitleFont { get; }
-        IDiagramText Title { get; }
+        IDiagramText TitleText { get; }
     }
 }

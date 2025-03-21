@@ -4,21 +4,20 @@ using System.Drawing;
 
 namespace DiagramLibrary
 {
-
     public class DiagramCoordinateSystem : IDiagramCoordinateSystem
     {
-        public PointF Location { get; }
+        public IDiagramLocation Location { get; }
 
-        public DiagramCoordinateSystem(PointF location)
+        public DiagramCoordinateSystem(IDiagramLocation location)
         {
             this.Location = location;
         }
-        public PointF ConvertPoint(Point3d pt)
+        public static PointF ConvertPoint(Point3d pt)
         {
             return new PointF((float)pt.X, (float)pt.Y);
         }
 
-        public Point3d ConvertPoint(PointF pt)
+        public static Point3d ConvertPoint(PointF pt)
         {
             return new Point3d(pt.X, pt.Y, 0);
         }

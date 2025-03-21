@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using DiagramLibrary;
+﻿using DiagramLibrary;
+using DiagramLibrary.Defaults;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
+using System;
+using System.Drawing;
 
 namespace DiagramsForGrasshopper
 {
@@ -17,7 +17,7 @@ namespace DiagramsForGrasshopper
               "A componant to create Dimentions to be used in diagrams",
              "Display", "Diagram")
         {
-            Modifiers.Add(new TextModifiers(true, true, true,false,false,true,false, false));
+            Modifiers.Add(new TextModifiers(true, true, true, false, false, true, false, false));
             Modifiers.Add(new CurveModifiers(true, true, true, true));
         }
 
@@ -35,8 +35,6 @@ namespace DiagramsForGrasshopper
 
         }
 
-
-
         /// <summary>
         /// This is the method that actually does the work.
         /// </summary>
@@ -45,62 +43,69 @@ namespace DiagramsForGrasshopper
         {
             this.GetAllValues(DA);
             double offset = 0;
-            Point3d p1 = Point3d.Unset;
-            Point3d p2 = Point3d.Unset;
-            string suffix = string.Empty;
-            string overrideText = string.Empty;
-            int round = 2;
+            var startPoint = Point3d.Unset;
+            var endPoint = Point3d.Unset;
+            var suffix = string.Empty;
+            var overrideText = string.Empty;
+            var roundToPlaces = 2;
 
-         
-
-            DA.GetData(0, ref p1);
-            DA.GetData(1, ref p2);
+            DA.GetData(0, ref startPoint);
+            DA.GetData(1, ref endPoint);
             DA.GetData(2, ref offset);
             DA.GetData(3, ref overrideText);
             DA.GetData(4, ref suffix);
-            DA.GetData(5, ref round);
-        
-          
-            if (p1 == Point3d.Unset)
+            DA.GetData(5, ref roundToPlaces);
+
+            if (startPoint == Point3d.Unset)
             {
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Point1 cannot be Null");
                 return null;
             }
 
-            if (p2 == Point3d.Unset)
+            if (endPoint == Point3d.Unset)
             {
                 this.AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "Point2 cannot be Null");
                 return null;
             }
 
+            var textModifiers = this.GetFirstOrDefaultTextModifier();
+            var curveModifiers = this.GetFirstOrDefaultCurveModifier();
+
+            var line = new LineCurve(startPoint, endPoint);
+
+            var dimensionAttributes =
+                new DimensionAttributes((float)offset, roundToPlaces, suffix, overrideText);
+
+            var startCurveEnd = curveModifiers.StartingCurveEnd ?? DiagramDefaults.DefaultDimensionCurveEnd(1);
 
 
-            TextModifiers textModifiers = this.GetFirstOrDefaultTextModifier();
-            CurveModifiers curveModifiers = this.GetFirstOrDefaultCurveModifier();
+            var curveAttributes = new DiagramCurveAttributes(curveModifiers.LineColors, (float)curveModifiers.LineWeight);
 
+            var justification = new DiagramTextJustification(TextJustification.Center);
 
+            var anchor = new DiagramTextAnchor(TextJustification.Center);
 
-            DiagramDimention diagramDimention = DiagramDimention.Create(p1, p2, textModifiers.TextColor, (float)curveModifiers.LineWeight, suffix, overrideText, textModifiers.TextBackgroundColor, (float)textModifiers.TextScale, textModifiers.Font, (float)textModifiers.TextPadding, round, DiagramCurveEnd.DefaultDimentionCurveEnd(1, textModifiers.TextColor, (float)curveModifiers.LineWeight), (float)offset);
+            var textAttributes = new DiagramTextAttributes(curveAttributes, justification, anchor,, textModifiers.TextColor, textModifiers.TextBackgroundColor,
+                textModifiers.Font, (float)textModifiers.TextScale, (float)textModifiers.TextPadding);
 
-            if (curveModifiers.StartingCurveEnd != null) {
-                diagramDimention.AddCurveEnds(curveModifiers.StartingCurveEnd, null);
-            }
-            if (curveModifiers.EndingCurveEnd != null)
-            {
-                diagramDimention.AddCurveEnds(null,curveModifiers.EndingCurveEnd);
-            }
+            var diagramDimension = new DiagramDimension(line,
+                dimensionAttributes, startCurveEnd, curveAttributes, textAttributes);
 
+            var size = diagramDimension.GetTotalSize();
 
-            SizeF size = diagramDimention.GetTotalSize();
-            Diagram diagram = Diagram.Create((int)Math.Ceiling(size.Width), (int)Math.Ceiling(size.Height), null, Color.Transparent, 0, Color.Transparent, diagramDimention.GetBoundingBoxLocation());
-            diagram.AddDiagramObject(diagramDimention);
+            var frame = new DiagramFrame((int)Math.Ceiling(size.Width), (int)Math.Ceiling(size.Height), Color.Transparent, 0, Color.Transparent);
 
+            var title = DiagramDefaults.DefaultTitle;
+
+            var location = new DiagramLocation(diagramDimension.GetBoundingBoxLocation());
+
+            var diagram = new Diagram(frame, title, location);
+
+            diagram.Objects.Add(diagramDimension);
 
             return diagram;
 
-
         }
-
 
         /// <summary>
         /// Provides an Icon for the component.

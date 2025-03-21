@@ -7,9 +7,8 @@ using System.Collections.Generic;
 namespace DiagramLibrary
 {
 
-    public class DiagramObjectConverter
+    public class DiagramObjectConverter : IDiagramObjectConverter
     {
-
         public IDiagramObjectSet Convert(Grasshopper.Kernel.GH_Component component,
             List<object> objects, double tolerance)
         {
@@ -80,82 +79,66 @@ namespace DiagramLibrary
 
             switch (geoBase.ObjectType)
             {
-                case Rhino.DocObjects.ObjectType.None:
-                    break;
-                case Rhino.DocObjects.ObjectType.Point:
-                    break;
-                case Rhino.DocObjects.ObjectType.PointSet:
-                    break;
                 case Rhino.DocObjects.ObjectType.Curve:
                     goo.CastTo(out Curve crv);
 
                     var diagramCurve =
                         new DiagramCurve(crv, DiagramDefaults.DefaultDiagramAttributes);
+
                     diagramObjects.Add(diagramCurve);
                     break;
                 case Rhino.DocObjects.ObjectType.Surface:
-                    goo.CastTo(out Surface srf);
+                    {
+                        goo.CastTo(out Surface srf);
 
-                    var brepCurves = this.AddBrep(tolerance, srf.ToBrep());
-                    diagramObjects.AddRange(brepCurves);
+                        var brepCurves = this.AddBrep(srf.ToBrep());
+
+                        diagramObjects.AddRange(brepCurves);
+                    }
                     break;
                 case Rhino.DocObjects.ObjectType.Brep:
+                    {
+                        goo.CastTo(out Brep brep);
+                        var brepCurves = this.AddBrep(brep);
+                        diagramObjects.AddRange(brepCurves);
+                    }
 
-                    goo.CastTo(out Brep brep);
-                    var brepCurves = this.AddBrep(tolerance, brep);
-                    diagramObjects.AddRange(brepCurves);
-                    break;
-                case Rhino.DocObjects.ObjectType.Mesh:
-                    break;
-                case Rhino.DocObjects.ObjectType.Light:
-                    break;
-                case Rhino.DocObjects.ObjectType.Annotation:
-                    break;
-                case Rhino.DocObjects.ObjectType.InstanceDefinition:
-                    break;
-                case Rhino.DocObjects.ObjectType.InstanceReference:
-                    break;
-                case Rhino.DocObjects.ObjectType.TextDot:
-                    break;
-                case Rhino.DocObjects.ObjectType.Grip:
-                    break;
-                case Rhino.DocObjects.ObjectType.Detail:
-                    break;
-                case Rhino.DocObjects.ObjectType.Hatch:
-
-                    break;
-                case Rhino.DocObjects.ObjectType.MorphControl:
-                    break;
-                case Rhino.DocObjects.ObjectType.SubD:
-                    break;
-                case Rhino.DocObjects.ObjectType.BrepLoop:
-                    break;
-                case Rhino.DocObjects.ObjectType.PolysrfFilter:
-                    break;
-                case Rhino.DocObjects.ObjectType.EdgeFilter:
-                    break;
-                case Rhino.DocObjects.ObjectType.PolyedgeFilter:
-                    break;
-                case Rhino.DocObjects.ObjectType.MeshVertex:
-                    break;
-                case Rhino.DocObjects.ObjectType.MeshEdge:
-                    break;
-                case Rhino.DocObjects.ObjectType.MeshFace:
-                    break;
-                case Rhino.DocObjects.ObjectType.Cage:
-                    break;
-                case Rhino.DocObjects.ObjectType.Phantom:
-                    break;
-                case Rhino.DocObjects.ObjectType.ClipPlane:
                     break;
                 case Rhino.DocObjects.ObjectType.Extrusion:
-                    goo.CastTo(out Extrusion ext);
+                    {
+                        goo.CastTo(out Extrusion ext);
 
-                    var brepCurves = this.AddBrep(tolerance, ext.ToBrep());
-                    diagramObjects.AddRange(brepCurves);
+                        var brepCurves = this.AddBrep(ext.ToBrep());
+
+                        diagramObjects.AddRange(brepCurves);
+                    }
+
                     break;
+                case Rhino.DocObjects.ObjectType.None:
+                case Rhino.DocObjects.ObjectType.Point:
+                case Rhino.DocObjects.ObjectType.PointSet:
+                case Rhino.DocObjects.ObjectType.Mesh:
+                case Rhino.DocObjects.ObjectType.Light:
+                case Rhino.DocObjects.ObjectType.Annotation:
+                case Rhino.DocObjects.ObjectType.InstanceDefinition:
+                case Rhino.DocObjects.ObjectType.InstanceReference:
+                case Rhino.DocObjects.ObjectType.TextDot:
+                case Rhino.DocObjects.ObjectType.Grip:
+                case Rhino.DocObjects.ObjectType.Detail:
+                case Rhino.DocObjects.ObjectType.Hatch:
+                case Rhino.DocObjects.ObjectType.MorphControl:
+                case Rhino.DocObjects.ObjectType.SubD:
+                case Rhino.DocObjects.ObjectType.BrepLoop:
+                case Rhino.DocObjects.ObjectType.PolysrfFilter:
+                case Rhino.DocObjects.ObjectType.EdgeFilter:
+                case Rhino.DocObjects.ObjectType.PolyedgeFilter:
+                case Rhino.DocObjects.ObjectType.MeshVertex:
+                case Rhino.DocObjects.ObjectType.MeshEdge:
+                case Rhino.DocObjects.ObjectType.MeshFace:
+                case Rhino.DocObjects.ObjectType.Cage:
+                case Rhino.DocObjects.ObjectType.Phantom:
+                case Rhino.DocObjects.ObjectType.ClipPlane:
                 case Rhino.DocObjects.ObjectType.AnyObject:
-                    break;
                 default:
                     break;
             }
@@ -163,13 +146,11 @@ namespace DiagramLibrary
             return diagramObjects;
         }
 
-        private IDiagramObjectSet AddBrep(double tolernace, Brep brep)
+        private IDiagramObjectSet AddBrep(Brep brep)
         {
             var diagramObjects = new DiagramObjectSet();
 
-            var curves = DiagramFilledCurve.CreateFromBrep(brep,
-                DiagramDefaults.DefaultColor, DiagramDefaults.DefaultColor,
-                DiagramDefaults.DefaultLineWeight);
+            var curves = DiagramHatch.CreateFromBrep(brep, DiagramDefaults.DefaultDiagramAttributes, DiagramDefaults.DefaultHatchAttributes);
 
             diagramObjects.AddRange(curves);
 
